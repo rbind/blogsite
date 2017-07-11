@@ -9,6 +9,6 @@ title: Home
 > I like karage chicken.
 > --TC
 
-People need to write to get thoughts organized. I should do this earlier, srsly! 
+People need to write to get thoughts organized. I should have done this earlier, srsly! 
 
 ### Blog entries
