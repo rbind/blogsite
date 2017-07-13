@@ -1,0 +1,66 @@
+---
+title: "About Cancer"
+author: "TC"
+date: '2017-07-13'
+categories: cancer
+slug: about-cancer
+tags: cancer
+bibliography: /home/tc/GIT/blogsite/references.bib
+---
+
+### "This blog gives me cancer"
+
+Before I started my project in this lab, my only impression on cancer is that it's only a nasty disease. A nasty, deadly disease that's difficult to cure and difficult to predict as well. 
+
+But as I've read further, it appears more than that. 
+
+And, this blog can't give anyone cancer, I promise.
+
+***
+
+#### All cancers are rare
+
+It's complicated than other genetic-related diseases because there is no defining genetic features in cancer. Historically, cancer type is decided by histology, that is, cancer types are defined by where it originates. 
+
+And there are one hundreds types. and they are different.
+
+#### Do dinosaurs have cancer?
+
+If cancer are spontaneously initiated by random errors in DNA replication, larger animals will tend to have higher chance to develop cancer than smaller ones. However, this is not the case. We know that lab rats have higher chance of developing cancers than humans; whales, elephants also have significantly lower chance of getting hit by the cancer bomb than estimated. but why?
+
+Evidence is gloomy and unclear, currently. We don't know.
+
+#### 40% lifetime risk of getting cancer. 
+
+If you are in a rich country, it gets higher.
+
+According to globocan[@ferlay_estimates_2010], it's true.
+
+Be good to yourself, your friend, and your family, because almost one in two will have to face this fate.
+
+
+#### We can sequence the whole genome for a patient, but it doesn't help (much)
+
+The conflict lies in our ability to interpret the data, and the data that's available.
+
+There is only a tiny small set of cancer "driver" mutations in one patient. and we know little about them. When a particular pathway, gene, protein is characterized, personalized drug developed, there's only a subset of patients will benefit from it[@vogelstein_cancer_2013].
+
+It's not a war on cancer, it's a compaign comprises countless battles.
+
+#### Evolve like a champ 
+
+Recurrence and drug resistance, what worse scenario can one expect if a disease have these features.
+
+It's nasty, and stubborn. Because it is empowered by the force of evolution.
+
+#### Puppies have the only contageous cancer in the world 
+
+ohhhh nooooo! I love puppies.
+
+#### Will we evolve to acquire the ability against cancer?
+
+Hardly. In theory most cancer are developed when people get old and post-reproductive, which means it has little to no selective power on our species.
+
+But this hypothesis is likely to be challenged by the fact that whales and elephants have resistance of developing cancer.
+
+#### Reference
