@@ -1,0 +1,98 @@
+---
+title: presentation in R
+author: TC
+date: '2017-07-20'
+slug: presentation-in-r
+categories:
+  - r
+tags:
+  - r-markdown
+---
+
+<!-- BLOGDOWN-HEAD -->
+<!-- /BLOGDOWN-HEAD -->
+
+<!-- BLOGDOWN-BODY-BEFORE -->
+<!-- /BLOGDOWN-BODY-BEFORE -->
+<div id="a-sunny" class="section level2">
+<h2>A sunny</h2>
+<p>I’ve tried ioslide in rmarkdown before. And <a href="https://github.com/yihui/xaringan/wiki">xaringan</a> today. It looks pretty neat. Here is my quick note of what I have learned</p>
+<p>My take on MS ppt / libreoffice impress / ioslide / remark(xaringan):</p>
+<ul>
+<li><p>MS ppt / libreoffice impress, I’ll have to spend lots of time aligning elements instead of focusing on the content.</p></li>
+<li><p>ioslide: neat, but inserting pictures is a pain in the ass. I end up editing the picture resolutions/ inserting modifying code into it. which is contrary to the reason I went for rmarkdown in the first place: care less about the format.</p></li>
+<li><p>xaringan: better so far, but a bit complicated than ioslide. I’ll give it a try next time and see if there’s new problems</p></li>
+</ul>
+</div>
+<div id="basics" class="section level1">
+<h1>basics</h1>
+<div id="page-separator" class="section level2">
+<h2>page separator</h2>
+<ul>
+<li><p>use <code>---</code> to separate pages</p></li>
+<li><p>use <code>--</code> to inherit content in previous page, for incrementally adding points</p></li>
+</ul>
+</div>
+<div id="page-property" class="section level2">
+<h2>page property</h2>
+<ul>
+<li><p>class property: align the entire slides, including <code>left</code>, <code>center</code>,<code>right</code>, <code>top</code>, <code>middle</code> and <code>botom</code></p></li>
+<li><p>layout property is a bit tricky, avoid it.</p></li>
+</ul>
+</div>
+<div id="export" class="section level2">
+<h2>export</h2>
+<ul>
+<li>exoprting it to a pdf has some issues, use dectape.js as :</li>
+</ul>
+<pre><code>system(&quot;phantomjs decktape.js slides.html slides.pdf&quot;)</code></pre>
+</div>
+<div id="figure" class="section level2">
+<h2>figure</h2>
+<ul>
+<li>figures are rendered greater than ioslide<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></li>
+</ul>
+</div>
+<div id="layout" class="section level2">
+<h2>layout</h2>
+<ul>
+<li>column by column:</li>
+</ul>
+<pre><code>---
+.pull-left[some stuff]
+
+.pull-right[some other stuff]
+---
+</code></pre>
+<ul>
+<li>footnote:</li>
+</ul>
+<pre><code>blablabla&lt;sup&gt;*&lt;/sup&gt;
+
+.footnote[[*] Not really. See next page.]</code></pre>
+<ul>
+<li>alignment element
+<ul>
+<li>pics and text works too.</li>
+</ul></li>
+</ul>
+<pre><code>.right[![Right-aligned image](https://i.imgur.com/y4kNQKa.jpg)]
+.right[Right-aligned text]</code></pre>
+</div>
+<div id="presentation-control" class="section level2">
+<h2>presentation control</h2>
+<ul>
+<li>press h for an reminder</li>
+</ul>
+</div>
+<div id="issues" class="section level2">
+<h2>issues</h2>
+<p>hmmm I’ll come back if I run into any issues.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>it does not fit into the slide<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
