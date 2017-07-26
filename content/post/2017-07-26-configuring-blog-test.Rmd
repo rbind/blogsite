@@ -65,7 +65,26 @@ markdown style title:
 
 # enable disqus 
 
-[Following this PR](https://github.com/yihui/hugo-xmin/pull/4), some experiments:
+[Following this PR](https://github.com/yihui/hugo-xmin/pull/4)
+
+- Well, it seems that editing things in the /themes/hugo-xmin/exampleSite/ doesn't work
+
+- ok i find it, config.toml is in the home dir /blogsite/config.toml
+
+- edited `config.toml` and `layouts/partials/foot_custom.html` as in PR:
+
+> We were unable to load Disqus. If you are a moderator please see our troubleshooting guide.
+
+- follow the [troubleshooting guide](https://help.disqus.com/customer/portal/articles/472007-i-m-receiving-the-message-%22we-were-unable-to-load-disqus-%22):
+        - add `netlify.com` in the trusted domain doesn't work  
+        - double check shortname: correct in config.toml  
+        - "recent webhost or domain name change"? no.  
+        - "timeout" : unclear  
+        - HTTP status error: unclear  
+        - non-ASCII characters: not any  
+        - incorrectly formatted javascript variables: unclear.  
+        
+    
 
 
 

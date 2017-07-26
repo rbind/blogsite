@@ -82,5 +82,22 @@ markdown style title:
 </div>
 <div id="enable-disqus" class="section level1">
 <h1><span class="header-section-number">2</span> enable disqus</h1>
-<p><a href="https://github.com/yihui/hugo-xmin/pull/4">Following this PR</a>, some experiments:</p>
+<p><a href="https://github.com/yihui/hugo-xmin/pull/4">Following this PR</a></p>
+<ul>
+<li><p>Well, it seems that editing things in the /themes/hugo-xmin/exampleSite/ doesn’t work</p></li>
+<li><p>ok i find it, config.toml is in the home dir /blogsite/config.toml</p></li>
+<li><p>edited <code>config.toml</code> and <code>layouts/partials/foot_custom.html</code> as in PR:</p></li>
+</ul>
+<blockquote>
+<p>We were unable to load Disqus. If you are a moderator please see our troubleshooting guide.</p>
+</blockquote>
+<ul>
+<li>follow the <a href="https://help.disqus.com/customer/portal/articles/472007-i-m-receiving-the-message-%22we-were-unable-to-load-disqus-%22">troubleshooting guide</a>: - add <code>netlify.com</code> in the trusted domain doesn’t work<br />
+- double check shortname: correct in config.toml<br />
+- “recent webhost or domain name change”? no.<br />
+- “timeout” : unclear<br />
+- HTTP status error: unclear<br />
+- non-ASCII characters: not any<br />
+- incorrectly formatted javascript variables: unclear.</li>
+</ul>
 </div>
