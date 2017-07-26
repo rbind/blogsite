@@ -1,0 +1,86 @@
+---
+title: Configuring blog test
+author: tc
+date: '2017-07-26'
+slug: configuring-blog-test
+categories:
+  - trivial
+tags:
+  - blogdown
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+<!-- BLOGDOWN-HEAD -->
+<!-- /BLOGDOWN-HEAD -->
+
+<!-- BLOGDOWN-BODY-BEFORE -->
+<div id="TOC">
+<ul>
+<li><a href="#add-toc"><span class="toc-section-number">1</span> Add TOC</a><ul>
+<li><a href="#title1"><span class="toc-section-number">1.1</span> title1</a><ul>
+<li><a href="#title-1.1"><span class="toc-section-number">1.1.1</span> title 1.1</a></li>
+</ul></li>
+<li><a href="#title2"><span class="toc-section-number">1.2</span> title2</a><ul>
+<li><a href="#title-2.1"><span class="toc-section-number">1.2.1</span> title 2.1</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#enable-disqus"><span class="toc-section-number">2</span> enable disqus</a></li>
+</ul>
+</div>
+<!-- /BLOGDOWN-BODY-BEFORE -->
+<div id="add-toc" class="section level1">
+<h1><span class="header-section-number">1</span> Add TOC</h1>
+<hr />
+<div id="title1" class="section level2">
+<h2><span class="header-section-number">1.1</span> title1</h2>
+<div id="title-1.1" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> title 1.1</h3>
+</div>
+</div>
+<div id="title2" class="section level2">
+<h2><span class="header-section-number">1.2</span> title2</h2>
+<div id="title-2.1" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> title 2.1</h3>
+<div id="title-2.1.1" class="section level4">
+<h4><span class="header-section-number">1.2.1.1</span> title 2.1.1</h4>
+<hr />
+<p>code for toc and titles is in plain markdown:</p>
+<pre><code>YAML:
+
+---
+title: Configuring blog test
+author: tc
+date: &#39;2017-07-26&#39;
+slug: configuring-blog-test
+categories:
+  - trivial
+tags:
+  - blogdown
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+markdown style title:
+
+## title1
+
+### title 1.1
+
+## title2
+
+### title 2.1
+
+#### title 2.1.1</code></pre>
+<hr />
+</div>
+</div>
+</div>
+</div>
+<div id="enable-disqus" class="section level1">
+<h1><span class="header-section-number">2</span> enable disqus</h1>
+<p><a href="https://github.com/yihui/hugo-xmin/pull/4">Following this PR</a>, some experiments:</p>
+</div>

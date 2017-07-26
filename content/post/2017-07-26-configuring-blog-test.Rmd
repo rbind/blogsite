@@ -1,0 +1,71 @@
+---
+title: Configuring blog test
+author: tc
+date: '2017-07-26'
+slug: configuring-blog-test
+categories:
+  - trivial
+tags:
+  - blogdown
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# Add TOC
+
+***
+
+## title1
+
+### title 1.1
+
+## title2
+
+### title 2.1
+
+#### title 2.1.1
+
+***
+
+code for toc and titles is in plain markdown:
+
+```
+YAML:
+
+---
+title: Configuring blog test
+author: tc
+date: '2017-07-26'
+slug: configuring-blog-test
+categories:
+  - trivial
+tags:
+  - blogdown
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+markdown style title:
+
+## title1
+
+### title 1.1
+
+## title2
+
+### title 2.1
+
+#### title 2.1.1
+```
+
+***
+
+# enable disqus 
+
+[Following this PR](https://github.com/yihui/hugo-xmin/pull/4), some experiments:
+
+
+
