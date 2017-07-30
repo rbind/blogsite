@@ -82,7 +82,9 @@ markdown style title:
         - "timeout" : unclear  
         - HTTP status error: unclear  
         - non-ASCII characters: not any  
-        - incorrectly formatted javascript variables: unclear.  
+        - incorrectly formatted javascript variables: unclear, used _internal
+        
+- 
         
     
 
