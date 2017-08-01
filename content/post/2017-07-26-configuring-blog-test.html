@@ -13,10 +13,7 @@ output:
     number_sections: true
 ---
 
-<!-- BLOGDOWN-HEAD -->
-<!-- /BLOGDOWN-HEAD -->
 
-<!-- BLOGDOWN-BODY-BEFORE -->
 <div id="TOC">
 <ul>
 <li><a href="#add-toc"><span class="toc-section-number">1</span> Add TOC</a><ul>
@@ -27,10 +24,12 @@ output:
 <li><a href="#title-2.1"><span class="toc-section-number">1.2.1</span> title 2.1</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#enable-disqus"><span class="toc-section-number">2</span> enable disqus</a></li>
+<li><a href="#enable-disqus"><span class="toc-section-number">2</span> enable disqus</a><ul>
+<li><a href="#update-2017-08-01-201420"><span class="toc-section-number">2.1</span> update 2017-08-01 20:14:20</a></li>
+</ul></li>
 </ul>
 </div>
-<!-- /BLOGDOWN-BODY-BEFORE -->
+
 <div id="add-toc" class="section level1">
 <h1><span class="header-section-number">1</span> Add TOC</h1>
 <hr />
@@ -92,13 +91,25 @@ markdown style title:
 <p>We were unable to load Disqus. If you are a moderator please see our troubleshooting guide.</p>
 </blockquote>
 <ul>
-<li><p>follow the <a href="https://help.disqus.com/customer/portal/articles/472007-i-m-receiving-the-message-%22we-were-unable-to-load-disqus-%22">troubleshooting guide</a>: - add <code>netlify.com</code> in the trusted domain doesn’t work<br />
+<li>follow the <a href="https://help.disqus.com/customer/portal/articles/472007-i-m-receiving-the-message-%22we-were-unable-to-load-disqus-%22">troubleshooting guide</a>: - add <code>netlify.com</code> in the trusted domain doesn’t work<br />
 - double check shortname: correct in config.toml<br />
 - “recent webhost or domain name change”? no.<br />
 - “timeout” : unclear<br />
 - HTTP status error: unclear<br />
 - non-ASCII characters: not any<br />
-- incorrectly formatted javascript variables: unclear, used _internal</p></li>
-<li></li>
+- incorrectly formatted javascript variables: unclear, used _internal</li>
 </ul>
+<div id="update-2017-08-01-201420" class="section level2">
+<h2><span class="header-section-number">2.1</span> update 2017-08-01 20:14:20</h2>
+<p>It is somehow working, but I don’t know why because of limited knowledge in the hugo frame work (and overall website setups)</p>
+<ul>
+<li>Here is what I’ve tried, one of them might work:
+<ul>
+<li>add “rbind.io” in trusted domain in disqus</li>
+<li>use <code>HUGO_VERSION 0.25.1</code> in netlify deploying specification (previous: 0.24.1 and local:0.20.1 seems to be outdated)</li>
+<li>strictly follow <a href="https://github.com/yihui/hugo-xmin/pull/4">this PR</a></li>
+</ul></li>
+</ul>
+<p>Next step is to make blogtest2 working, which is <a href="http://testtc.netlify.com/">here</a></p>
+</div>
 </div>

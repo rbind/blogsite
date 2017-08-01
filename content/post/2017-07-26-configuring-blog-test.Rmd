@@ -83,9 +83,19 @@ markdown style title:
         - HTTP status error: unclear  
         - non-ASCII characters: not any  
         - incorrectly formatted javascript variables: unclear, used _internal
-        
-- 
-        
+         
+## update `r Sys.time()`
+
+It is somehow working, but I don't know why because of limited knowledge in the hugo frame work (and overall website setups)
+
+- Here is what I've tried, one of them might work:
+    - add "rbind.io" in trusted domain in disqus
+    - use `HUGO_VERSION 0.25.1` in netlify deploying specification (previous: 0.24.1 and local:0.20.1 seems to be outdated)
+    - strictly follow [this PR](https://github.com/yihui/hugo-xmin/pull/4)
+    
+Next step is to make blogtest2 working, which is [here](http://testtc.netlify.com/)
+
+
     
 
 
