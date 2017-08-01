@@ -95,8 +95,33 @@ It is somehow working, but I don't know why because of limited knowledge in the 
     
 Next step is to make blogtest2 working, which is [here](http://testtc.netlify.com/)
 
+## update `r Sys.time()`
 
+playing with the testblog
+
+Here is what I found:
+
+two disqus names: 
+    a. tcblogsitetest  
+    a. tc_testit
     
+two blogsites:
+    1. http://testtc.netlify.com/
+    1. http://tc.rbind.io/
+    
+test:
+    - a + 1, a + 2, working
+    - b + 1, b + 2, notworking
+    - settings of a,b: besides shortname, there is no difference: they set netlify.com and rbind.io to trusted domain in advanced search.
+
+A preliminary conclusion is that problem is in disqus set up, not hugo (or blogdown).
+
+
+## update `r Sys.time()` Finally!!!
+
+It is working for both disqus shortnames, great.
+
+
 
 
 
