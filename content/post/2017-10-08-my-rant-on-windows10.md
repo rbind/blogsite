@@ -65,3 +65,12 @@ STOP ASSUMING YOU KNOW WHAT I WOULD LIKE TO DO WITH MY COMPUTER! MICROSOFT YOU L
 
 ![](https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif)
 
+## (update 2017-10-11 21:44)STUPID shortcuts
+
+In rstudio, `ctrl+alt+i` inserts an R code chunk in the rmarkdown file.
+
+Guess what I got in windows 10?
+
+A FUCKING "í"
+
+![](https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif)
