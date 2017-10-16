@@ -7,6 +7,7 @@ categories:
   - cancer
 tags:
   - bioinformatics
+draft: true
 ---
 
 One of the subject in my field, is termed "driver discovery", which aims to prioritize those genetic or epigenetic mutations that contribute to tumorigenesis, the development of malignant tumor tissue.
