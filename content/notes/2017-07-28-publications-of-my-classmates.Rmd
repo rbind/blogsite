@@ -37,6 +37,10 @@ For a starter, it might be interesting to see what my classmates (undergrad peri
 3. *Simulating Large-Scale Conformational Changes of Proteins by Accelerating Collective Motions Obtained from Principal Component Analysis* [@peng_simulating_2014]
     - Molecular dynamics, great...
     - So it uses modes found in PCA to guide structural sampling, which solves some kind of bias called "tip effect" in the elastic models.
+    
+***
+
+
 
 # Reference
 
