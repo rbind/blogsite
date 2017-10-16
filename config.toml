@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Another Random Blog"
-theme = "hugo-xmin2"
+theme = "hugo-xmin"
 googleAnalytics = ""
 disqusShortname = "tcblogsitetest"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
