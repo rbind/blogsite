@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Another Random Blog"
-theme = "hugo-xmin"
+theme = "hugo-classic"
 googleAnalytics = ""
 disqusShortname = "tcblogsitetest"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
@@ -34,4 +34,4 @@ footnotereturnlinkcontents = "↩"
 
 [params]
     description = "A website built through Hugo and blogdown."
-    footer = "&copy; [TC](https://tctc.netlify.com) 2017 | [Github](https://github.com/tcgriffith) | [Twitter](https://twitter.com/ustcer_ztc)"
+    footer = "Powered by hugo, netlify and blogdown &copy; [TC](https://tctc.netlify.com) 2017 | [Github](https://github.com/tcgriffith) | [Twitter](https://twitter.com/ustcer_ztc)"
