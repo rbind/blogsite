@@ -3,7 +3,7 @@ title: Home
 nocomment: true
 ---
 
-[<https://i.imgur.com/2NLJP8V.jpg" style="max-width:200px;min-width:40px;float:right;" />](https://github.com/tcgriffith)
+<img src=https://i.imgur.com/2NLJP8V.jpg" style="max-width:200px;min-width:40px;float:right; border-radius: 50%" />
 
 ## Another Random Blog
 
