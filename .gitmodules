@@ -1,12 +1,6 @@
-[submodule "themes/hugo-xmin2"]
-	path = themes/hugo-xmin2
-	url = https://github.com/yihui/hugo-xmin.git
 [submodule "themes/hugo-xmin"]
 	path = themes/hugo-xmin
 	url = https://github.com/yihui/hugo-xmin.git
-[submodule "themes/hugo-classic.git"]
-	path = themes/hugo-classic.git
-	url = https://github.com/goodroot/hugo-classic.git
 [submodule "themes/hugo-classic"]
 	path = themes/hugo-classic
 	url = https://github.com/goodroot/hugo-classic.git
