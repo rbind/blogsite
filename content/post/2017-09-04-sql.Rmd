@@ -3,8 +3,10 @@ title: "learning SQL"
 author: "tc"
 date: '2017-09-04'
 slug: sql
-tags: sql
-categories: sql
+tags: 
+  - sql
+categories: 
+  - sql
 ---
 
 ## Learning SQL FTW

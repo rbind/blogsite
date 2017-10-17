@@ -5,7 +5,9 @@ author: "TC"
 date: '2017-05-12'
 slug: terminology-in-testing
 tags: []
-categories: trivial
+categories: 
+  - trivial
+draft: true
 ---
 
 # About

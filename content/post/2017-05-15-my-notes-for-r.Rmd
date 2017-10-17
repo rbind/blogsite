@@ -1,8 +1,8 @@
 ---
-title: My Notes For R
+title: Personal tricks in R
 author: TC
 date: '2017-05-15'
-slug: my-notes-for-r
+slug: tricks-for-r
 categories:
   - r
 tags:

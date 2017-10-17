@@ -52,6 +52,5 @@ In summary the version control of git is really a bad idea for track-changes for
 
 ***
 
-See you, world.
 
 ***

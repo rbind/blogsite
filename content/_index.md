@@ -7,20 +7,24 @@ nocomment: true
 
 ## Another Random Blog
 
-> I like karage chicken.
-> --TC
 
-People need to write to get thoughts organized. I should have done this earlier, srsly! 
+--- 
 
 ## Recent events  
-{{< now >}}
+>{{< now >}}
 
-I set up a new site here for my friends [owaraiclub](http://owaraiclub.com). During which, I learned a lot about:  
+
+
+I set up a new site here for my friends [owaraiclub](http://owaraiclub.com). 
+
+During which, I learned a lot about:  
 
 - html& css stuff  
 - web scraping from BILIBILI  
 - hugo framework  
 
 I'll summarise some of these interesting stuff when I get time.
+
+---  
 
 ### Blog entries

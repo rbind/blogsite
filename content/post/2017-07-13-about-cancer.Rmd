@@ -2,10 +2,13 @@
 title: "About Cancer"
 author: "TC"
 date: '2017-07-13'
-categories: cancer
+categories: 
+  - cancer
 slug: about-cancer
-tags: cancer
+tags: 
+  - cancer
 bibliography: /home/tc/GIT/blogsite/references.bib
+draft: true
 ---
 
 ### "This blog gives me cancer"
