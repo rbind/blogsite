@@ -2,7 +2,7 @@ baseurl = "/"
 languageCode = "en-us"
 title = "Another Random Blog"
 theme = "hugo-classic"
-googleAnalytics = ""
+googleAnalytics = "UA-107230532-2"
 disqusShortname = "tcblogsitetest"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 preserveTaxonomyNames = true
@@ -34,4 +34,4 @@ footnotereturnlinkcontents = "↩"
 
 [params]
     description = "A website built through Hugo and blogdown."
-    footer = "Powered by hugo, netlify and blogdown &copy; [TC](https://tctc.netlify.com) 2017 | [Github](https://github.com/tcgriffith) | [Twitter](https://twitter.com/ustcer_ztc)"
+    footer = "<i class='fa fa-weibo' aria-hidden='true'></i> Powered by hugo, netlify and blogdown &copy; [TC](https://tctc.netlify.com) 2017 | [Github](https://github.com/tcgriffith) | [Twitter](https://twitter.com/ustcer_ztc)"
