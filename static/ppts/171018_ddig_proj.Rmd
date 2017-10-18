@@ -1,0 +1,93 @@
+---
+title: "DDIG"
+author: "TC"
+date: "October 18, 2017"
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: io_lib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## A large project than I expected 
+
+3 servers
+
+- ddig-in
+- ddig-nfs
+- ddig-syn
+
+`/project/aspen/lukas/INDEL/server/misc`
+
+## Running up
+
+---
+
+- input 
+
+```{r}
+library(data.table)
+
+inputtest <-fread("/home/tc/GIT/ddig_yueyang/RUN1/query222")
+
+names(inputtest)[1] <-"chromosome"
+
+knitr::kable(inputtest)
+```
+
+---
+
+- features
+
+```{r }
+
+features <- fread("/home/tc/GIT/ddig_yueyang/RUN1/query222.ddig.SL.svm")
+
+knitr::kable(features)
+
+```
+
+---
+
+- output
+
+```{r message=FALSE}
+library(dplyr)
+output <- fread("/home/tc/GIT/ddig_yueyang/RUN1/results.txt")
+
+names(output)[1] <-"chromosome"
+
+output2 <- output %>%
+  select(1:4,10:11) %>%
+  head(10)
+knitr::kable(output2)
+
+```
+
+## Future work
+
+- read the code to understand how features are encoded & use them:
+such as `41_w_5_wl_0-911-731_w_5_wl_0-910-915-761`
+
+```bash
+pwd
+# /export/home/s2785075/INDEL/server/misc
+
+ find misc -name *silent*  |xargs wc -l
+
+#    45 misc/ddig_predict_silent.py
+#    26 misc/ddig_train_silent.py
+#  3436 misc/biodata_silent.py
+#  1301 misc/features.py
+#  4737 total
+
+```
+
+
+
+
+

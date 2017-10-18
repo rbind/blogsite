@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DDIG</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+  <meta name="date" content="2017-10-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'DDIG',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'TC' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="io_lib/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="io_lib/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="io_lib/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="io_lib/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="io_lib/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="io_lib/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="io_lib/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="io_lib/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="io_lib/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="io_lib/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+  </style>
+
+
+</head>
+
+<body style="opacity: 0">
+
+<slides>
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">October 18, 2017</p>
+          </hgroup>
+  </slide>
+
+<slide class=''><hgroup><h2>A large project than I expected</h2></hgroup><article  id="a-large-project-than-i-expected">
+
+<p>3 servers</p>
+
+<ul>
+<li>ddig-in</li>
+<li>ddig-nfs</li>
+<li>ddig-syn</li>
+</ul>
+
+<p><code>/project/aspen/lukas/INDEL/server/misc</code></p>
+
+</article></slide><slide class=''><hgroup><h2>Running up</h2></hgroup><article  id="running-up">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>input</li>
+</ul>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">chromosome</th>
+<th align="right">genomic_coords_hg19</th>
+<th align="left">not_used</th>
+<th align="left">orig_seq</th>
+<th align="left">mut_seq</th>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">173878691</td>
+<td align="left">.</td>
+<td align="left">T</td>
+<td align="left">C</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">173873198</td>
+<td align="left">.</td>
+<td align="left">A</td>
+<td align="left">G</td>
+</tr>
+<tr class="odd">
+<td align="left">16</td>
+<td align="right">16253384</td>
+<td align="left">.</td>
+<td align="left">G</td>
+<td align="left">A</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="right">16253339</td>
+<td align="left">.</td>
+<td align="left">C</td>
+<td align="left">T</td>
+</tr>
+<tr class="odd">
+<td align="left">16</td>
+<td align="right">71602614</td>
+<td align="left">.</td>
+<td align="left">C</td>
+<td align="left">A</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="right">71602170</td>
+<td align="left">.</td>
+<td align="left">A</td>
+<td align="left">G</td>
+</tr>
+<tr class="odd">
+<td align="left">20</td>
+<td align="right">10639222</td>
+<td align="left">.</td>
+<td align="left">G</td>
+<td align="left">A</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="right">10637069</td>
+<td align="left">.</td>
+<td align="left">A</td>
+<td align="left">C</td>
+</tr>
+<tr class="odd">
+<td align="left">21</td>
+<td align="right">45708253</td>
+<td align="left">.</td>
+<td align="left">C</td>
+<td align="left">G</td>
+</tr>
+<tr class="even">
+<td align="left">21</td>
+<td align="right">45708277</td>
+<td align="left">.</td>
+<td align="left">C</td>
+<td align="left">T</td>
+</tr>
+<tr class="odd">
+<td align="left">X</td>
+<td align="right">152034485</td>
+<td align="left">.</td>
+<td align="left">C</td>
+<td align="left">T</td>
+</tr>
+<tr class="even">
+<td align="left">X</td>
+<td align="right">152036178</td>
+<td align="left">.</td>
+<td align="left">G</td>
+<td align="left">A</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>features</li>
+</ul>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="right">V1</th>
+<th align="left">V2</th>
+<th align="left">V3</th>
+<th align="left">V4</th>
+<th align="left">V5</th>
+<th align="left">V6</th>
+<th align="left">V7</th>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1:-0.0985962591307</td>
+<td align="left">2:-0.454523821264</td>
+<td align="left">3:-0.468673474965</td>
+<td align="left">4:-0.644605859816</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:-0.332522153566</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">1:2.44590523584</td>
+<td align="left">2:3.01003993237</td>
+<td align="left">3:-1.00697585484</td>
+<td align="left">4:0.837907426179</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:1.62404833986</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1:0.644010023256</td>
+<td align="left">2:2.08160115385</td>
+<td align="left">3:-2.64182011967</td>
+<td align="left">4:2.11674208504</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:1.08496833405</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">1:0.694563033089</td>
+<td align="left">2:-0.454523821264</td>
+<td align="left">3:0.175010852299</td>
+<td align="left">4:-0.644605859816</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:0.182512816942</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1:1.25006507218</td>
+<td align="left">2:-0.454523821264</td>
+<td align="left">3:0.45413060483</td>
+<td align="left">4:-0.644605859816</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:1.54761300627</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">1:-0.240958183375</td>
+<td align="left">2:0.0920894855741</td>
+<td align="left">3:2.52759162363</td>
+<td align="left">4:1.05160303497</td>
+<td align="left">5:1.47276836235</td>
+<td align="left">6:0.535968885323</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1:1.19253923341</td>
+<td align="left">2:1.14914315983</td>
+<td align="left">3:-0.262656514764</td>
+<td align="left">4:1.83960559239</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:1.20534007868</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">1:-0.105569088073</td>
+<td align="left">2:-0.0767175650671</td>
+<td align="left">3:0.175010852299</td>
+<td align="left">4:2.28035278553</td>
+<td align="left">5:1.47276836235</td>
+<td align="left">6:0.518930668549</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1:0.418555220778</td>
+<td align="left">2:-0.454523821264</td>
+<td align="left">3:-1.59274758039</td>
+<td align="left">4:-0.644605859816</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:0.91750323951</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">1:-2.331644728</td>
+<td align="left">2:-0.454523821264</td>
+<td align="left">3:-2.12630302571</td>
+<td align="left">4:-0.644605859816</td>
+<td align="left">5:-0.678934444581</td>
+<td align="left">6:-1.27920970884</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">1:0.774169496851</td>
+<td align="left">2:2.66036818462</td>
+<td align="left">3:-1.38862939402</td>
+<td align="left">4:2.91142263024</td>
+<td align="left">5:1.47276836235</td>
+<td align="left">6:1.34201422129</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">1:-0.702327031744</td>
+<td align="left">2:0.409607509399</td>
+<td align="left">3:-0.599688869009</td>
+<td align="left">4:0.153413679267</td>
+<td align="left">5:1.47276836235</td>
+<td align="left">6:-2.09144461345</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>output</li>
+</ul>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">chromosome</th>
+<th align="right">chr_position</th>
+<th align="left">ref_allele</th>
+<th align="left">alt_allele</th>
+<th align="left">prediction</th>
+<th align="right">probability</th>
+</tr>
+<tr class="odd">
+<td align="left">chr16</td>
+<td align="right">16253384</td>
+<td align="left">G</td>
+<td align="left">A</td>
+<td align="left">neutral</td>
+<td align="right">98.2</td>
+</tr>
+<tr class="even">
+<td align="left">chr16</td>
+<td align="right">16253339</td>
+<td align="left">C</td>
+<td align="left">T</td>
+<td align="left">neutral</td>
+<td align="right">53.4</td>
+</tr>
+<tr class="odd">
+<td align="left">chr21</td>
+<td align="right">45708253</td>
+<td align="left">C</td>
+<td align="left">G</td>
+<td align="left">neutral</td>
+<td align="right">96.8</td>
+</tr>
+<tr class="even">
+<td align="left">chr21</td>
+<td align="right">45708277</td>
+<td align="left">C</td>
+<td align="left">T</td>
+<td align="left">neutral</td>
+<td align="right">98.6</td>
+</tr>
+<tr class="odd">
+<td align="left">chr20</td>
+<td align="right">10639222</td>
+<td align="left">G</td>
+<td align="left">A</td>
+<td align="left">neutral</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="even">
+<td align="left">chr20</td>
+<td align="right">10637069</td>
+<td align="left">A</td>
+<td align="left">C</td>
+<td align="left">neutral</td>
+<td align="right">99.6</td>
+</tr>
+<tr class="odd">
+<td align="left">chrX</td>
+<td align="right">152034485</td>
+<td align="left">C</td>
+<td align="left">T</td>
+<td align="left">disease</td>
+<td align="right">51.8</td>
+</tr>
+<tr class="even">
+<td align="left">chrX</td>
+<td align="right">152036178</td>
+<td align="left">G</td>
+<td align="left">A</td>
+<td align="left">neutral</td>
+<td align="right">98.9</td>
+</tr>
+<tr class="odd">
+<td align="left">chr1</td>
+<td align="right">173878691</td>
+<td align="left">T</td>
+<td align="left">C</td>
+<td align="left">neutral</td>
+<td align="right">52.1</td>
+</tr>
+<tr class="even">
+<td align="left">chr1</td>
+<td align="right">173873198</td>
+<td align="left">A</td>
+<td align="left">G</td>
+<td align="left">neutral</td>
+<td align="right">95.2</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Future work</h2></hgroup><article  id="future-work">
+
+<ul>
+<li>read the code to understand how features are encoded &amp; use them: such as <code>41_w_5_wl_0-911-731_w_5_wl_0-910-915-761</code></li>
+</ul>
+
+<pre class = 'prettyprint lang-bash'>pwd
+# /export/home/s2785075/INDEL/server/misc
+
+ find misc -name *silent*  |xargs wc -l
+
+#    45 misc/ddig_predict_silent.py
+#    26 misc/ddig_train_silent.py
+#  3436 misc/biodata_silent.py
+#  1301 misc/features.py
+#  4737 total
+</pre></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
