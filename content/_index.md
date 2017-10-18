@@ -5,13 +5,13 @@ nocomment: true
 
 <img src=https://i.imgur.com/2NLJP8V.jpg" style="max-width:200px;min-width:40px;float:right; padding:10px; border-radius: 50%" />
 
-## Another Random Blog
-
+## TC's Another Random Blog 
+#### {{< now >}}
 
 --- 
 
 ## Recent events  
->{{< now >}}
+
 
 
 

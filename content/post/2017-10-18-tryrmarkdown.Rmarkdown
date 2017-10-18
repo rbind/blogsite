@@ -1,0 +1,26 @@
+---
+title: tryrmarkdown
+author: tc
+date: '2017-10-18'
+slug: tryrmarkdown
+categories:
+  - r
+tags:
+  - blogdown
+  - r-markdown
+draft: true
+---
+
+## aaa
+
+```{r}
+library(dplyr)
+knitr::kable(mtcars %>% head(5))
+```
+
+$$
+
+a=\flac{b}{c}
+
+$$
+
