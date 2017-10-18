@@ -29,9 +29,9 @@ footnotereturnlinkcontents = "↩"
     url = "/tags/"
     weight = 4
 [[menu.main]]
-    name = "Subscribe"
-    url = "/index.xml"
+    name = "slides"
+    url = "/myslides/"
 
 [params]
     description = "A website built through Hugo and blogdown."
-    footer = "<i class='fa fa-weibo' aria-hidden='true'></i> Powered by hugo, netlify and blogdown &copy; [TC](https://tctc.netlify.com) 2017 | [Github](https://github.com/tcgriffith) | [Twitter](https://twitter.com/ustcer_ztc)"
+    footer = "Powered by hugo, netlify and blogdown <br> <i class='fa fa-copyright' aria-hidden='true'></i>  [TC](https://tctc.netlify.com) 2017 | [<i class='fa fa-github' aria-hidden='true'></i>](https://github.com/tcgriffith) | [<i class='fa fa-twitter' aria-hidden='true'></i>](https://twitter.com/ustcer_ztc)| [<i class='fa fa-google' aria-hidden='true'></i>](mailto:ztc.ustcer@gmail.com)"

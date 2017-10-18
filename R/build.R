@@ -34,12 +34,8 @@ message(dates)
 
 slides2 <- gsub("static/", "", slides) %>%
   gsub("Rmd","html",.)
-
-
-
 indxheader <- yaml::as.yaml(list(title = "SLIDES",
                                  nocomment = 'true'))
-
 contents <-
   paste0("- ",format.Date(dates,"%Y-%m-%d") ," [", titles, "](/", slides2, ")")
 message(contents)
