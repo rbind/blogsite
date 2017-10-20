@@ -50,15 +50,11 @@ Sooo here's what I get:
 
 ```bash
 #!/bin/bash
+
 read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i")
 TMP_AVI=$(mktemp /tmp/outXXXXXXXXXX.avi)
+
 ffmpeg -s "$W"x"$H" -y -f x11grab -i :0.0+$X,$Y -vcodec huffyuv -r 25 $TMP_AVI \
-
-TRIM_AVI=$(mktemp /tmp/trimXXXXXXXXXXX.avi)
-ffmpeg -ss 00:00:10 -y -i $TMP_AVI $TRIM_AVI
-
-convert -set delay 5 -layers Optimize $TRIM_AVI ./out.gif
-echo $(pwd)/out.gif created!
-
+&& convert -set delay 5 -layers Optimize $TMP_AVI ./out.gif 
 ```
 
