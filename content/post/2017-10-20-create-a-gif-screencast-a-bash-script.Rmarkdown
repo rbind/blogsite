@@ -36,9 +36,9 @@ In the back:
 
 - it let's you select a region with your mouse, done by xrectsel
 - it records the region into a video, done by ffmpeg
-- turn it into a gif
+- turn it into a gif with convert from ImageMagick, optimized to save space.
 
-however, xrectsel doesn't work well in my distro(Ubuntu 16.04LTS). 
+However, xrectsel doesn't work well in my distro(Ubuntu 16.04LTS). 
 
 So I made some modifications and replaced xrectsel with [slop](https://github.com/naelstrof/slop) ^[for ffmpeg, i use sudo apt-get; for slop, it seems for other distro to be possible to install with package manager, but in ubuntu 16.04, some dependencies needs to be installed manually https://github.com/naelstrof/slop/issues/52].
 
