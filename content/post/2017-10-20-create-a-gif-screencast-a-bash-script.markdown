@@ -58,3 +58,19 @@ ffmpeg -s "$W"x"$H" -y -f x11grab -i :0.0+$X,$Y -vcodec huffyuv -r 25 $TMP_AVI \
 && convert -set delay 5 -layers Optimize $TMP_AVI ./out.gif 
 ```
 
+
+***
+
+I find that imgur will transform uploaded gif into mp4 again...
+
+here is what I got from them:
+
+<video autoplay="" loop="" class="" style="max-width: 100%; min-height: 455px;"><source type="video/mp4" src="//i.imgur.com/UREOakJ.mp4"></video>
+
+compared with the source file
+1.avi 591.7MB 
+1.gif 17.4MB
+1.mp4 4.8MB
+
+imgur surely did a great job on improving the network traffic!
+
