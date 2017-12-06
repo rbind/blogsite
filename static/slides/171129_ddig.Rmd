@@ -1,0 +1,127 @@
+---
+title: "DDIG-CAN"
+author: "TC"
+date: "2017/11/29"
+output:
+  xaringan::moon_reader:
+    css: ["default", "metropolis-fonts"]
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    self_contained: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+bibliography: ../references.bib
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+
+## Background
+
+- cancer mutations:   
+    - drivers  
+    - passengers  
+
+--
+
+- ddig:
+
+--
+    - ddig_in  
+    - ddig_fs  
+    - ddig_sn
+--
+    - **ddig_can** cancer specific  
+**A cancer driver predictor**
+
+---
+# Dataset
+
+- Definition
+    - CUTOFF: Driver >= 5 recurrence, passenger = 1 recurrence  
+    - Dataset: TCGA somatic mutation database 
+
+--
+
+- Protein selection
+    - 1053 proteins with drivers, 
+    - non-redundant (< 30% seq ID)
+    - different gene types CG/Non-CG/Putative-CG/POG/TSG
+
+--
+
+- Mutation selection
+    - driver: 1 per gene
+    - Passenger: 3 per gene, random selected
+    - Prediction results from 10 other tools
+
+---
+# Raw data summary (missense)
+
+```{r echo=FALSE}
+load("~/GIT/ddig-can/data/tmp.stat.rda")
+knitr::kable(tmp,format="html",digits = 3)
+```
+
+- Driver mutations: observed in >= 5 patients , 
+- passenger mutations: observed in 1 patients;
+
+---
+# predicted by other drivers
+
+```{r echo= FALSE}
+load("~/GIT/ddig-can/data/othertools.rda")
+
+knitr::kable(df,format="html",digits = 3)
+
+```
+
+- a total of 4212 mutations (1053 driver & 3159 passengers)
+
+---
+## ddig prediction 
+
+- Linear regression model
+
+- Features:
+  - 50 features  
+    - DNA  
+        - conservation  
+            - phylop: multi-species  
+            - pssm: multiple sequence alignment  
+        - KAKS:   
+    - proteins  
+        - Secondary Structure tendency (SS)  
+            - Helix, Coil, Sheet, etc.  
+        - Accessible surface area(ASA)  
+        - disorder tendency (D)  
+    - RNA 
+    
+  - window type: "surroundings" instead of "from mut to the end":
+  
+  -------wwwwwXwwwww-------
+  
+  -------wwwwwXwwwwwwwwwwww
+  
+---
+## (incorrect analysis omitted)
+
+
+- feature mapping issues
+
+
+
+
+---
+## High throughput Sequencing features
+
+- add functional annotations from experiments, they may have prediction power to infer the functional impact of different mutations:
+
+   - DNA CHiP, RNA CHiP seq, add protein binding information
+   - DNAme array, add DNA methylation info
+   - HiC, "detect chromatin-looping interactions between all loci in the genome"
+

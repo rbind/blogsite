@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DDIG-CAN</title>
+    <meta charset="utf-8">
+    <meta name="author" content="TC" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# DDIG-CAN
+### TC
+### 2017/11/29
+
+---
+
+
+
+
+
+## Background
+
+- cancer mutations:   
+    - drivers  
+    - passengers  
+
+--
+
+- ddig:
+
+--
+    - ddig_in  
+    - ddig_fs  
+    - ddig_sn
+--
+    - **ddig_can** cancer specific  
+**A cancer driver predictor**
+
+---
+# Dataset
+
+- Definition
+    - CUTOFF: Driver &gt;= 5 recurrence, passenger = 1 recurrence  
+    - Dataset: TCGA somatic mutation database 
+
+--
+
+- Protein selection
+    - 1053 proteins with drivers, 
+    - non-redundant (&lt; 30% seq ID)
+    - different gene types CG/Non-CG/Putative-CG/POG/TSG
+
+--
+
+- Mutation selection
+    - driver: 1 per gene
+    - Passenger: 3 per gene, random selected
+    - Prediction results from 10 other tools
+
+---
+# Raw data summary (missense)
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Genetype &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; gene_with_driver &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Gene_all &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; f &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NonCG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 764 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15136 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.050 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; PutativeCG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 159 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1548 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.103 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; OtherCG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.109 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; TSG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 100 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.310 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; POG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.500 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+- Driver mutations: observed in &gt;= 5 patients , 
+- passenger mutations: observed in 1 patients;
+
+---
+# predicted by other drivers
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; rows &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; fathmm &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; sift &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; muttaster &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mutassessor &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; metasvm &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NonCG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.676 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.460 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.265 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.659 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; PutativeCG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.610 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.474 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.502 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.278 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.589 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; OtherCG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.559 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.475 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.647 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.302 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.575 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; TSG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.573 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.484 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.629 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.275 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.573 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; POG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.643 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.477 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.682 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.244 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.652 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+- a total of 4212 mutations (1053 driver &amp; 3159 passengers)
+
+---
+## ddig prediction 
+
+- Linear regression model
+
+- Features:
+  - 50 features  
+    - DNA  
+        - conservation  
+            - phylop: multi-species  
+            - pssm: multiple sequence alignment  
+        - KAKS:   
+    - proteins  
+        - Secondary Structure tendency (SS)  
+            - Helix, Coil, Sheet, etc.  
+        - Accessible surface area(ASA)  
+        - disorder tendency (D)  
+    - RNA 
+    
+  - window type: "surroundings" instead of "from mut to the end":
+  
+  -------wwwwwXwwwww-------
+  
+  -------wwwwwXwwwwwwwwwwww
+  
+---
+## (incorrect analysis omitted)
+
+
+- feature mapping issues
+
+
+
+
+---
+## High throughput Sequencing features
+
+- add functional annotations from experiments, they may have prediction power to infer the functional impact of different mutations:
+
+   - DNA CHiP, RNA CHiP seq, add protein binding information
+   - DNAme array, add DNA methylation info
+   - HiC, "detect chromatin-looping interactions between all loci in the genome"
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

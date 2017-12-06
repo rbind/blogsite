@@ -15,7 +15,7 @@ slides <-
 message(slides)
 
 gettitle <- function(file) {
-  lines <- readLines(file)  
+  lines <- readLines(file)
   title = grep("title:(.*)$", lines, value = TRUE)[1] %>% gsub("title:", "", .) %>% stringr::str_trim()
   return(title)
 }
@@ -28,7 +28,7 @@ getdate <- function(file){
 
 titles <- sapply(slides, gettitle)
 dates <- sapply(slides, getdate)
-dates <- lubridate::parse_date_time(dates,orders = "b! d!, Y!")
+dates <- lubridate::parse_date_time(dates,orders = c("b! d!, Y!","ymd", "y-m-d", "y.m.d", "Ymd","Y/m/d"))
 
 message(dates)
 
@@ -39,7 +39,7 @@ indxheader <- yaml::as.yaml(list(title = "SLIDES",
 contents <-
   paste0("- ",format.Date(dates,"%Y-%m-%d") ," [", titles, "](/", slides2, ")")
 message(contents)
-text <- rbind("---", indxheader, "---", "{{< now >}}\n", contents)
+text <- c("---", indxheader, "---", "{{< now >}}\n", contents)
 
 fileConn <- file("content/myslides.md")
 writeLines(text, fileConn, useBytes = TRUE)

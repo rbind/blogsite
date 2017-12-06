@@ -68,7 +68,7 @@ a test mutation set:
     
 ```{r message=FALSE,echo=FALSE,fig.align="center"}
 library(ROCR)
-load("../data/logisticROC.rda")
+load("~/GIT/ddig-can/data/logisticROC.rda")
 plot(prf)
 ```
 
@@ -78,7 +78,7 @@ plot(prf)
     - accuracy: 0.597, AUC: 0.644
 ```{r message=FALSE,echo=FALSE,fig.align="center"}
 library(ROCR)
-load("../data/SVMROC.rda")
+load("~/GIT/ddig-can/data/SVMROC.rda")
 plot(prf)
 ```
 
@@ -111,5 +111,7 @@ coil_p_mean                    1   6.5244       652     852.60 0.0106403 *
 
 ---
 ## Ongoing
+
 - HTS features
 - test for other mutation types with previous features.
+
