@@ -5,7 +5,7 @@ date: "2017/11/29"
 output:
   xaringan::moon_reader:
     css: [default]
-    lib_dir: libs
+    lib_dir: slides/libs
     nature:
       highlightStyle: github
       highlightLines: true
