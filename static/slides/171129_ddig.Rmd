@@ -4,6 +4,7 @@ author: "TC"
 date: "2017/11/29"
 output:
   xaringan::moon_reader:
+    css: [default]
     lib_dir: libs
     nature:
       highlightStyle: github
