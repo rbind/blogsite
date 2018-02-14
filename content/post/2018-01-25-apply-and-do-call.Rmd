@@ -1,0 +1,15 @@
+---
+title: '`apply` and `do.call`'
+author: tc
+date: '2018-01-25'
+slug: apply-and-do-call
+categories:
+  - r
+tags:
+  - trivial
+---
+
+```{r}
+
+```
+
