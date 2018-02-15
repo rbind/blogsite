@@ -21,7 +21,9 @@ There are several ways to set font types in your blogdown site:
 Font files for chinese are usually large so web font is not an option. But english fonts are fine.
 
 In the rest of the post I'll demonstrate:
+
 - how to embed a ttf font into a blogdown website.
+
 - use google font.
 
 ## Results:
