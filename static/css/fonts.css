@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Sofia');
+
 @font-face {
   font-family: "spin_cycle";
-  src: url("spin_cycle.ttf");
+  src: url("/spin_cycle.ttf");
 }
 
 
 body {
-  font-family:  "spin_cycle", Optima, Candara, Calibri, Arial, sans-serif;
+  font-family:  Optima, Candara, Calibri, Arial, sans-serif;
 }
 code {
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 85%;
+}
+
+h3 {
+    font-family: "spin_cycle";
+}
+
+h4 {
+    font-family: 'Sofia';
 }
