@@ -21,8 +21,76 @@ class: center, middle, inverse, title-slide
 
 
 
+## Background
 
-# Hello World
+- dfire: all-atom statistical energy function
+
+--
+
+- dfire_RNA is specifically trained on rna structures
+
+![](http://image.wikifoundry.com/image/2/TgmUNZEy5quMoaMA-bW-dw52239/GW196H189.gif)
+
+---
+## Training
+
+- Training dataset  
+
+--
+    - 85 RNA structures (from RNApot)
+--
+    - Length &gt; 20, resolution &lt; 3.5A
+--
+    - Redundency removed with 95% sequence identity
+--
+- Par
+    - 85 atom types 
+    - Alpha 1.61
+    - 30 bins in (0~15A)
+    
+
+&lt;img src="180328_dfire_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+    
+    
+---
+## Decoy test
+
+Discriminate native structrue from non-native ones
+
+- RNApot
+
+- FARFAR
+
+- ~~RNAKB~~ (unavailable, contacting the author)
+    
+---
+
+## RNApot
+- dataset
+    - 500 decoys for each of the 85 structures used for training
+    - 2 structures too large, excluded
+
+- results 83/83 successfully identified (native has lowest structure )
+
+
+---
+
+## FARFAR
+
+- 32 RNA motifs 
+- 500 best scoring decoys 
+   - 5 most populated clusters, 3 best scoring structures for each cluster
+   - center, lowest energy model, 2nd lowest energy model
+   
+   
+- Result: 25/32 successfully identified
+
+
+---
+
+## Future work
+
+- 3d-rna score gives NAN
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
