@@ -23,76 +23,48 @@ class: center, middle, inverse, title-slide
 
 
 
-## Background
-- a
-- dfire: all-atom statistical energy function
+## Training dataset
 
---
-
-- dfire_RNA is specifically trained on rna structures
-
-![](http://image.wikifoundry.com/image/2/TgmUNZEy5quMoaMA-bW-dw52239/GW196H189.gif)
+- PDB RNA structures only (without protein or DNA)
+- resolution &lt; 3.0A.
+- removed structures in decoy sets
+- removed homologs using cd-hit-est (sequence identity &lt; 0.8, sequence coverage 0.8)
 
 ---
-## Training
+## benchmarks
 
-- Training dataset  
+- decoy test
+- near native ranking
 
---
-    - 85 RNA structures (from RNApot)
---
-    - Length &gt; 20, resolution &lt; 3.5A
---
-    - Redundency removed with 95% sequence identity
---
-- Par
-    - 85 atom types 
-    - Alpha 1.61
-    - 30 bins in (0~15A)
-    
 
-&lt;img src="180412_dfire_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
-    
-    
 ---
 ## Decoy test
 
-Discriminate native structrue from non-native ones
+- 85 cases 
 
-- RNApot
 
-- FARFAR
+&lt;img src="180412_dfire_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
 
-- ~~RNAKB~~ (unavailable, contacting the author)
+
     
 ---
 
-## RNApot
-- dataset
-    - 500 decoys for each of the 85 structures used for training
-    - 2 structures too large, excluded
+## Near native test
 
-- results 83/83 successfully identified (native has lowest structure )
+- top 10% by score and top 10% by GDT_TS
+- 43 cases, 500 decoys
+- ES: 1~10, higher 
 
+&lt;img src="180412_dfire_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
 
----
-
-## FARFAR
-
-- 32 RNA motifs 
-- 500 best scoring decoys 
-   - 5 most populated clusters, 3 best scoring structures for each cluster
-   - center, lowest energy model, 2nd lowest energy model
-   
-   
-- Result: 25/32 successfully identified
 
 
 ---
+## Others
 
-## Future work
+- GDT_TS
 
-- 3d-rna score gives NAN
+- other scores.
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
