@@ -1,0 +1,31 @@
+---
+title: "DFIRE_RNA"
+author: "TC"
+date: "2018/05/02"
+output:
+  xaringan::moon_reader:
+    css: ["default", "default-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE,echo=FALSE)
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+
+## Training dataset
+
+- PDB RNA structures only (without protein or DNA)
+- resolution < 3.0A.
+- removed structures in decoy sets
+- removed homologs using cd-hit-est (sequence identity < 0.8, sequence coverage 0.8)
