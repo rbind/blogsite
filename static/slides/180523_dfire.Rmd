@@ -24,15 +24,20 @@ library(ggplot2)
 ## DFIRE 
 
 - Reinventing the wheels: A PDB parser
-    - Previous: Arrays that record atom coordinates, residue & atom IDs;
-        - OK for simple application
+
+- Previous: One pdb -> multiple arrays;
+    - OK for simple application
 --
-    - Current: Structure/Model/Chain/Residue/Atom architecture; 
-        - Necessary for dihedral angle term:
+- Current: Structure/Model/Chain/Residue/Atom architecture; 
+    - Necessary for dihedral angle term:
 --
-        - To get more comfortable with C++: Makefile, pointers, boost library etc.
+    - To get more comfortable with C++: Makefile, pointers, boost library etc.
+--
+
+
 
 ---
+
 ## Dihedral angles
 
 - $\alpha$ , $\beta$ , $\gamma$ , $\delta$ , $\epsilon$ , $\zeta$ , $\chi$ 
@@ -54,16 +59,16 @@ $$
 \Delta G_i(\theta_a^i)=-k_BTln\frac{f_a^{OBS}(\theta^i_a)}{f_a^{REF}(\theta_a^i)}
 $$
 
-- Observed probability and reference probability are derived as
+- Observed probability 
 
 $$f_a^{OBS}(\theta^i_a)=\frac{N_i(\theta)}{\sum_{\theta}N_i(\theta)}=\frac{N_i(\theta)}{N_i}$$
 
+- And reference probability
+
 $$f_i^{REF}(\theta)=\frac{\sum_{i}N_i(\theta)}{\sum_{i}\sum_{\theta}N_i(\theta)}=\frac{N(\theta)}{N}$$
 
-
-
 ---
-## Distribution of different angles
+## Distribution of different angles (all nucleotides united)
 
 ```{r fig.height=7,fig.width=11,fig.align='center', echo=FALSE}
 library(data.table)
@@ -103,7 +108,9 @@ print(gg)
 ## Ongoing
 
 - Generate dihedral energy term and test on the 3 datasets
+
 - Combine with distance term
 
 - Other possibilities
     - base pairing and base stacking 
+    - KDE instead of bins
