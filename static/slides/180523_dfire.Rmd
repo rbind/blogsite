@@ -1,0 +1,109 @@
+---
+title: "DFIRE_RNA"
+author: "TC"
+date: "2018/05/23"
+output:
+  xaringan::moon_reader:
+    css: ["default", "default-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE,echo=FALSE, message=FALSE)
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+## DFIRE 
+
+- Reinventing the wheels: A PDB parser
+    - Previous: Arrays that record atom coordinates, residue & atom IDs;
+        - OK for simple application
+--
+    - Current: Structure/Model/Chain/Residue/Atom architecture; 
+        - Necessary for dihedral angle term:
+--
+        - To get more comfortable with C++: Makefile, pointers, boost library etc.
+
+---
+## Dihedral angles
+
+- $\alpha$ , $\beta$ , $\gamma$ , $\delta$ , $\epsilon$ , $\zeta$ , $\chi$ 
+- Two adjacent residues are required
+- [ $-\pi$, $\pi$ ]
+
+```{r fig.height=2, fig.align='center', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/5i6ez2p.png")
+```
+
+
+---
+## Dihedral term
+
+- From Boltzmann statistical distribution, the energy contribution $\Delta G_i(\theta_a^i)$ of **angle** $i$ ( $\alpha$ , $\beta$ , $\gamma$ , $\delta$ , $\epsilon$ , $\zeta$ , $\chi$ ) of $\theta$ **degree** can be derived as
+
+
+$$
+\Delta G_i(\theta_a^i)=-k_BTln\frac{f_a^{OBS}(\theta^i_a)}{f_a^{REF}(\theta_a^i)}
+$$
+
+- Observed probability and reference probability are derived as
+
+$$f_a^{OBS}(\theta^i_a)=\frac{N_i(\theta)}{\sum_{\theta}N_i(\theta)}=\frac{N_i(\theta)}{N_i}$$
+
+$$f_i^{REF}(\theta)=\frac{\sum_{i}N_i(\theta)}{\sum_{i}\sum_{\theta}N_i(\theta)}=\frac{N(\theta)}{N}$$
+
+
+
+---
+## Distribution of different angles
+
+```{r fig.height=7,fig.width=11,fig.align='center', echo=FALSE}
+library(data.table)
+
+library(tidyr)
+
+tmp.tbl <-fread("/home/tc/GIT/dfire_rna2/tmpdata/dihedral_distri.tab")
+
+colnames(tmp.tbl)=c("alpha","beta","gamma","delta","epsilon","zeta","chi")
+
+tmp.tbl2 <- tmp.tbl %>%
+  gather(key="angle_type",value="angles",1:7) %>%
+  mutate(angle_type=factor(angle_type,levels = c("alpha","beta","gamma","delta","epsilon","zeta","chi")))
+  
+gg <- ggplot(data=tmp.tbl2,aes(x=angles))+
+  geom_density(aes(fill=angle_type),alpha=0.5)+
+  xlim(-180,180)+
+  theme_classic()+
+  theme(text = element_text(size=20))
+
+print(gg)
+```
+
+```{r eval=FALSE}
+gg <- ggplot(data=tmp.tbl2,aes(x=bin))+
+  # geom_density(aes(fill=angle_type),alpha=0.5)+
+  geom_bar(aes(fill=angle_type),position = "dodge")+
+  # xlim(-180,180)+
+  theme_classic()+
+  theme(text = element_text(size=20))
+
+print(gg)
+```
+
+
+---
+## Ongoing
+
+- Generate dihedral energy term and test on the 3 datasets
+- Combine with distance term
+
+- Other possibilities
+    - base pairing and base stacking 
