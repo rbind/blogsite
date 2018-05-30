@@ -1,0 +1,68 @@
+---
+title: "DFIRE_RNA"
+author: "TC"
+date: "2018/05/23"
+output:
+  xaringan::moon_reader:
+    lib_dir: lib_tmp
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE,echo=FALSE, message=FALSE)
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+
+## 
+
+---
+## Dihedral Angle Distribution
+
+```{r fig.height=7,fig.width=9, fig.align='center', echo=FALSE}
+load("~/GIT/dfire_rna2/tmpdata/gg_angledistri.rda")
+
+print(tmp+ theme_classic())
+```
+
+---
+## pair/ unpair
+
+- Secondary structure calculated using DSSR
+
+```
+>1YFG_A nts=64 [1YFG_A] -- secondary structure derived by DSSR
+AGCGCCGU&CGCAG&GGAAGCGC&CAGGGCUCAU&ACCCUGAU&UCGGAUCG&AACCG&GCGGCGCUACCA
+(((((((.&(((..&.[..))).&(((((.....&.)))))..&.(((..]
+```
+
+- Aanalyze pair/unpair separately:
+
+
+---
+## pair
+
+```{r fig.height=7,fig.width=9, fig.align='center', echo=FALSE}
+
+print(tmp3+ theme_classic())
+```
+
+
+---
+
+## unpair
+
+
+```{r fig.height=7,fig.width=9, fig.align='center', echo=FALSE}
+
+print(tmp4+ theme_classic())
+```
+
+
