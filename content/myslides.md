@@ -12,3 +12,4 @@ nocomment: 'true'
 - 2018-04-12 ["DFIRE_RNA"](/slides/180412_dfire.html)
 - 2018-05-09 ["DFIRE_RNA"](/slides/180502_dfire.html)
 - 2018-05-23 ["DFIRE_RNA"](/slides/180523_dfire.html)
+- 2018-05-23 ["DFIRE_RNA"](/slides/180530_dfire.html)

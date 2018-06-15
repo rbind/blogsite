@@ -12,18 +12,7 @@ nocomment: true
 
 ## Recent events  
 
-
-
-
-I set up a new site here for my friends [owaraiclub](http://owaraiclub.com). 
-
-During which, I learned a lot about:  
-
-- html& css stuff  
-- web scraping from BILIBILI  
-- hugo framework  
-
-I'll summarise some of these interesting stuff when I get time.
+Moved to a new house, now I even get my own workbench!
 
 ---  
 
