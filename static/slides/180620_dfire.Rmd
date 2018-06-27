@@ -1,0 +1,117 @@
+---
+title: "Project dfire_rna"
+author: "TC"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE,fig.height=7,fig.width=9, fig.align='center', echo=FALSE)
+
+library(tidyverse)
+library(gridExtra)
+```
+
+
+
+#  3dRNAscore
+
+.pull-left[
+
+- Seven dihedral angles in rna:
+
+```{r fig.height=5,fig.width=9, fig.align='center', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/vsHLuZF.png")
+```
+
+- The average of those angles are used as reference state in 3dRNAscore
+
+]
+
+.pull-right[
+
+```{r fig.height=5,fig.width=9, fig.align='center', echo=FALSE,fig.cap="reference state of 3drna"}
+load("~/GIT/dfire_rna2//tmpdata/gg_3drna.rda")
+
+gg_3drna
+```
+
+]
+
+---
+
+# Summary of 3dRNA
+
+.pull-left[
+- distance term(top) and dihedral term(bottom)
+- pearson correlation (spearman in parenthesis):
+    - GDT-ALL - E_dist : 0.681 (0.851)
+    - GDT-ALL - E_dih  : 0.452 (0.773)
+    - GDT-ALL - Etotal : 0.680 (0.860)
+
+- Etotal = 27.11 + 0.43 E_{dist} + 1.59 E_{dih}
+]
+
+
+.pull-right[
+```{r fig.height=9,fig.width=7, fig.align='center', echo=FALSE,fig.cap="example 3drnascore for 500 decoys of 1a9nR"}
+
+load("~/GIT/dfire_rna2/tmpdata/ggl_dist_dih.rda")
+
+
+do.call(gridExtra::grid.arrange, ggl)
+```
+
+]
+
+
+
+
+---
+
+# Back to dfire_rna
+
+- training dataset updated (with help from Peng)
+    - ~ 500 structures
+    - redundancy & structures from test removed
+
+- new dfire_rna (distance term only) is similar to old version:
+
+```{r fig.height=5,fig.width=7, fig.align='center', echo=FALSE,fig.cap= "new vs old dfire_rna score for 1a9nR"}
+load( "~/GIT/dfire_rna2//tmpdata/gg1_oldnew.rda")
+
+gg1
+```
+
+
+
+---
+
+# Dfire_rna Dihedral Term
+
+- reference state from 3dRNAscore may introduce noise.
+
+```{r fig.height=5,fig.width=7, fig.align='center', echo=FALSE}
+load("~/GIT/dfire_rna2/tmpdata/dih.ref.rda")
+
+do.call(gridExtra::grid.arrange, dih.ref)
+```
+
+
+
+---
+
+# Other subjects in progress
+
+- benchmarking dihedral term
+
+- tweaking & benchmarking dipolar term (probably next week)
+
+
+

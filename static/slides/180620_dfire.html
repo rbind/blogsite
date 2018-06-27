@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project dfire_rna</title>
+    <meta charset="utf-8">
+    <meta name="author" content="TC" />
+    <meta name="date" content="2018-06-27" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Project dfire_rna
+### TC
+### 2018-06-27
+
+---
+
+
+
+
+
+
+#  3dRNAscore
+
+.pull-left[
+
+- Seven dihedral angles in rna:
+
+&lt;img src="https://i.imgur.com/vsHLuZF.png" style="display: block; margin: auto;" /&gt;
+
+- The average of those angles are used as reference state in 3dRNAscore
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180620_dfire_files/figure-html/unnamed-chunk-2-1.png" alt="reference state of 3drna"  /&gt;
+&lt;p class="caption"&gt;reference state of 3drna&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+
+# Summary of 3dRNA
+
+.pull-left[
+- distance term(top) and dihedral term(bottom)
+- pearson correlation (spearman in parenthesis):
+    - GDT-ALL - E_dist : 0.681 (0.851)
+    - GDT-ALL - E_dih  : 0.452 (0.773)
+    - GDT-ALL - Etotal : 0.680 (0.860)
+
+- Etotal = 27.11 + 0.43 E_{dist} + 1.59 E_{dih}
+]
+
+
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180620_dfire_files/figure-html/unnamed-chunk-3-1.png" alt="example 3drnascore for 500 decoys of 1a9nR"  /&gt;
+&lt;p class="caption"&gt;example 3drnascore for 500 decoys of 1a9nR&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+
+
+
+---
+
+# Back to dfire_rna
+
+- training dataset updated (with help from Peng)
+    - ~ 500 structures
+    - redundancy &amp; structures from test removed
+
+- new dfire_rna (distance term only) is similar to old version:
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180620_dfire_files/figure-html/unnamed-chunk-4-1.png" alt="new vs old dfire_rna score for 1a9nR"  /&gt;
+&lt;p class="caption"&gt;new vs old dfire_rna score for 1a9nR&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+---
+
+# Dfire_rna Dihedral Term
+
+- reference state from 3dRNAscore may introduce noise.
+
+&lt;img src="180620_dfire_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Other subjects in progress
+
+- benchmarking dihedral term
+
+- tweaking &amp; benchmarking dipolar term (probably next week)
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
