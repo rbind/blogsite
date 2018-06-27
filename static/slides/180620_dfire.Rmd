@@ -1,7 +1,7 @@
 ---
 title: "Project dfire_rna"
 author: "TC"
-date: "`r Sys.Date()`"
+date: "2018/06/27"
 output:
   xaringan::moon_reader:
     lib_dir: libs

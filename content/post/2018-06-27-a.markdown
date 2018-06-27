@@ -1,0 +1,35 @@
+---
+title: Performance of Rstudio 1.0153 and 1.2.687
+author: TC
+date: '2018-06-27'
+categories:
+  - r
+  - rstudio
+tags:
+  - rstudio
+slug: a
+---
+
+This issue of Rstudio IDE has been reported for a while but has not been fixed.
+
+The issue is that in rstudio (>=1.1), viewing wide or long data frame,matrix in the view panel feels clunky, but lower versions (such as 1.0.153) is much smoother. ^[Actually I am making this post to show off that I can screencap a beautiful gif]
+
+Test code:
+
+```r
+test.mat <- matrix(data=runif(2000000,0,1),nrow=20000,ncol=100)
+
+View(test.mat)
+```
+
+View test.mat in 1.0153:
+
+![1.0.153](/post/2018-06-27-a_files/1.0153.gif)
+
+View test.mat in 1.2.687:
+
+![1.2.687](/post/2018-06-27-a_files/1.2.687.gif)
+
+
+---
+

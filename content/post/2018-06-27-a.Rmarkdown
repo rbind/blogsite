@@ -1,0 +1,29 @@
+---
+title: Performance of Rstudio 1.0153 and 1.2.687
+author: TC
+date: '2018-06-27'
+categories:
+  - r
+  - rstudio
+tags:
+  - rstudio
+slug: a
+---
+
+This issue of Rstudio IDE has been reported for a while but has not been fixed.
+
+```{r}
+test.mat <- matrix(data=runif(2000000,0,1),nrow=20000,ncol=100)
+
+View(test.mat)
+```
+
+
+
+
+1.0153
+
+![](/post/2018-06-27-a_files/1.2.687.gif)
+
+1.2.687
+
