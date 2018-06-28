@@ -32,4 +32,10 @@ View test.mat in 1.2.687:
 
 
 ---
+- [Related post](https://community.rstudio.com/t/rsstudio-1-1-perfomance-issues/1915/16)
+
+- [Related github issue](https://github.com/rstudio/rstudio/issues/1771)
+
+- [And they used my code for investigation, yay!](https://github.com/rstudio/rstudio/issues/2962)
+
 
