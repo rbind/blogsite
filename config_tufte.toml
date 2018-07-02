@@ -1,0 +1,49 @@
+baseurl = "/"
+languageCode = "en-us"
+title = "Another Random Blog"
+theme = "tuftesque"
+googleAnalytics = "UA-107230532-2"
+disqusShortname = "tcblogsitetest"
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+preserveTaxonomyNames = true
+footnotereturnlinkcontents = "↩"
+
+[permalinks]
+    post = "/post/:year/:month/:day/:slug/"
+    note = "/note/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+[[menu.main]]
+    name = "slides"
+    url = "/myslides/"
+
+[params]
+    description = "A website built through Hugo and blogdown."
+    footer = "Powered by hugo, netlify and blogdown <br> <i class='fa fa-copyright' aria-hidden='true'></i>  [TC](https://tctc.netlify.com) 2017 | [<i class='fa fa-github' aria-hidden='true'></i>](https://github.com/tcgriffith) | [<i class='fa fa-twitter' aria-hidden='true'></i>](https://twitter.com/ustcer_ztc)| [<i class='fa fa-google' aria-hidden='true'></i>](mailto:ztc.ustcer@gmail.com)"
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+
+   [params.logo]
+      url = "/image/banner.jpg"
