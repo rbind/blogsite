@@ -10,3 +10,6 @@
 [submodule "themes/tuftesque"]
 	path = themes/tuftesque
 	url = https://github.com/nstrayer/tuftesque
+[submodule "themes/beautifulhugo"]
+	path = themes/beautifulhugo
+	url = https://github.com/halogenica/beautifulhugo
