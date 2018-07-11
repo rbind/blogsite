@@ -1,0 +1,188 @@
+---
+title: "SPalign for RNA"
+author: "TC"
+date: "2018/07/11"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      progressbar: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE,fig.height=7,fig.width=9, fig.align='center', echo=FALSE)
+
+library(tidyverse)
+library(gridExtra)
+```
+
+
+<style>
+    .remark-slide-number {
+      position: inherit;
+    }
+
+    .remark-slide-number .progress-bar-container {
+      position: absolute;
+      bottom: 0;
+      height: 6px;
+      display: block;
+      left: 0;
+      right: 0;
+    }
+
+    .remark-slide-number .progress-bar {
+      height: 100%;
+      background-color: red;
+    }
+</style>
+
+
+## Problem with RNA structure alignment
+
+--
+
+- Mostly **web servers**:  
+
+--
+(from  [omictools](https://omictools.com/rna-structure-alignment-category))
+    - ARTS (2006 Nucleic Acids Res)
+    - R3D Align (2013 Nucleic Acids Res)
+    - iPARTS2 (2016 Nucleic Acids Res)
+    - WebSTAR3D (2016 Bioinformatics) 
+    - SARA (2009 Nucleic Acids Res)
+    - SupeRNAlign (2017 Nucleic Acids Res)
+    - **RMalign** (2018 BioRxiv)
+    
+--
+
+.footnote[Only RMalign, ONLY, and it's not published yet]
+---
+## Problem with RNA structure alignment
+
+--
+
+- Mostly **Slow**
+
+--
+    - running time for 4 pairs of 16s~23s rRNA
+
+```{r echo=FALSE, results="asis"}
+data.table::fread("rRNAs	ARTS	LaJolla	SARA	R3D Align	STAR3D
+pair1	117.2	119 886.7	27 035.2	751.7	1.7
+pair2	98.5	125 835.9	26 184.8	573.4	2.0
+pair3	79.7	152 635.6	27 467.3	653.2	1.4
+pair4	20.1	16 209.3	4714.4	308.9	1.1
+") -> tmp
+knitr::kable(tmp,format = "markdown")
+```
+
+.footnote[Ge, P., & Zhang, S. (2015). STAR3D: a stack-based RNA 3D structural alignment tool. Nucleic acids research, 43(20), e137-e137.
+]
+
+
+---
+class: center, inverse, middle
+
+## "Ok! Let's do it ourselves."
+### - Peng
+
+---
+
+## Start from SPalignNS
+
+- What is changed:
+--
+    - Added a new rna class to support RNA
+--
+    - Turned off Seeds initialized from secondary structure
+        - 2 of 4 seeds initialization
+--
+    - Other minor tweaks on makefile, parameter namespace ...
+    
+---
+
+## Basic Tests
+
+.pull-left[
+- 1a9n native vs 4 decoy structure(M1 ~ M500)
+
+```{r echo = FALSE, results='asis'}
+
+tmp <- data.table::fread(
+  "
+Query RMSD Nali SP TM GDT 
+M1 0.19 24 0.690 0.946 1.000
+M100 3.78 24 0.382 0.119 0.510
+M300 3.47 18 0.308 0.081 0.375
+M500 4.49 19 0.221 0.054 0.312
+  "
+)
+ knitr::kable(tmp, format = "markdown",digits = 3)
+```
+
+
+]
+.footnote[SP: SPscore, TM: TMscore, 
+GDT: global distance test score]
+.pull-right[
+
+```{r echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/7Ej9NbB.gif")
+```
+
+]
+
+---
+
+## Result2 Running Time Test
+
+- 16s & 23s tRNA (5wnu_A 1498nt , 1ffk_0, 2706nt )
+
+```
+# time
+real	1m19.111s
+user	1m19.042s
+sys	0m0.024s
+
+RMSD: 4.76
+SPe: 0.193
+
+
+```
+
+---
+## Others
+
+- [Dropped it on github](https://github.com/tcgriffith/spalign_rna) with MIT open source license*(the most popular one)
+
+- aspen: `/project/aspen/TC/GIT/spalign_rna`
+
+
+--
+
+.footnote[*By the way, my blog is also licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)]
+
+---
+
+```
+################## Alignment Report ##################
+1ffk_0_23s.pdb 5wnu_A_16s.pdb: Length= 2706 1498
+SP-score (SPe): 0.193 (SPa: 0.076; SPb: 0.097)
+Effective_Length: 560; Pfold= 0.1%
+RMSD/Nali= 4.76 / 158 ;
+GDT= 0.043 ;
+TMscore(a,b,c)= 0.094 0.124 0.076 SEQID= 8.7%
+
+Rotation Matrix:
+  33.93113 -0.00738  0.62619  0.77964
+ 178.28775  0.03860 -0.77890  0.62596
+ -46.60058  0.99923  0.03471 -0.01842
+
+Alignment: 1ffk_0_23s.pdb 5wnu_A_16s.pdb		Structure Overlap: 4.01 %
+```
+
+
