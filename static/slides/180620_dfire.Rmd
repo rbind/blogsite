@@ -1,7 +1,7 @@
 ---
 title: "Project dfire_rna"
 author: "TC"
-date: "2018/06/27"
+date: "2018/06/27 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -9,6 +9,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      progressbar: true
 ---
 
 ```{r setup, include=FALSE}
@@ -17,6 +18,27 @@ options(htmltools.dir.version = FALSE,fig.height=7,fig.width=9, fig.align='cente
 library(tidyverse)
 library(gridExtra)
 ```
+
+
+<style>
+    .remark-slide-number {
+      position: inherit;
+    }
+
+    .remark-slide-number .progress-bar-container {
+      position: absolute;
+      bottom: 0;
+      height: 6px;
+      display: block;
+      left: 0;
+      right: 0;
+    }
+
+    .remark-slide-number .progress-bar {
+      height: 100%;
+      background-color: red;
+    }
+</style>
 
 
 
@@ -104,14 +126,23 @@ do.call(gridExtra::grid.arrange, dih.ref)
 ```
 
 
+---
+
+## DFIRE Energy per nucleotide
+
 
 ---
 
-# Other subjects in progress
 
-- benchmarking dihedral term
 
-- tweaking & benchmarking dipolar term (probably next week)
+
+<!-- --- -->
+
+<!-- # Other subjects in progress -->
+
+<!-- - benchmarking dihedral term -->
+
+<!-- - tweaking & benchmarking dipolar term (probably next week) -->
 
 
 
