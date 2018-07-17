@@ -13,12 +13,33 @@ class: center, middle, inverse, title-slide
 
 # Project dfire_rna
 ### TC
-### 2018/06/27
+### 2018/06/27 (updated: 2018-07-04)
 
 ---
 
 
 
+
+
+&lt;style&gt;
+    .remark-slide-number {
+      position: inherit;
+    }
+
+    .remark-slide-number .progress-bar-container {
+      position: absolute;
+      bottom: 0;
+      height: 6px;
+      display: block;
+      left: 0;
+      right: 0;
+    }
+
+    .remark-slide-number .progress-bar {
+      height: 100%;
+      background-color: red;
+    }
+&lt;/style&gt;
 
 
 
@@ -95,20 +116,35 @@ class: center, middle, inverse, title-slide
 &lt;img src="180620_dfire_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
 
 
+---
+
+## DFIRE Energy per nucleotide
+
 
 ---
 
-# Other subjects in progress
 
-- benchmarking dihedral term
 
-- tweaking &amp; benchmarking dipolar term (probably next week)
+
+&lt;!-- --- --&gt;
+
+&lt;!-- # Other subjects in progress --&gt;
+
+&lt;!-- - benchmarking dihedral term --&gt;
+
+&lt;!-- - tweaking &amp; benchmarking dipolar term (probably next week) --&gt;
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"countIncrementalSlides": false
+"countIncrementalSlides": false,
+slideNumberFormat: (current, total) => `
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: ${current/total*100}%">
+          </div>
+        </div>
+      `
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
