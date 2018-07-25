@@ -12,9 +12,6 @@ slug: a
 
 This issue of Rstudio IDE has been reported for a while but has not been fixed.
 
-The issue is that in rstudio (>=1.1), viewing wide or long data frame,matrix in the view panel feels clunky, but lower versions (such as 1.0.153) is much smoother. ^[Actually I am making this post to show off that I can screencap a beautiful gif]
-
-Test code:
 
 ```r
 test.mat <- matrix(data=runif(2000000,0,1),nrow=20000,ncol=100)
@@ -22,20 +19,12 @@ test.mat <- matrix(data=runif(2000000,0,1),nrow=20000,ncol=100)
 View(test.mat)
 ```
 
-View test.mat in 1.0153:
-
-![1.0.153](/post/2018-06-27-a_files/1.0153.gif)
-
-View test.mat in 1.2.687:
-
-![1.2.687](/post/2018-06-27-a_files/1.2.687.gif)
 
 
----
-- [Related post](https://community.rstudio.com/t/rsstudio-1-1-perfomance-issues/1915/16)
 
-- [Related github issue](https://github.com/rstudio/rstudio/issues/1771)
+1.0153
 
-- [And they used my code for investigation, yay!](https://github.com/rstudio/rstudio/issues/2962)
+![](/post/2018-06-27-a_files/1.2.687.gif)
 
+1.2.687
 

@@ -15,3 +15,4 @@ nocomment: 'true'
 - 2018-05-23 ["DFIRE_RNA"](/slides/180530_dfire.html)
 - 2018-06-27 ["Project dfire_rna"](/slides/180620_dfire.html)
 - 2018-07-11 ["SPalign for RNA"](/slides/180711_spalign.html)
+- 2018-07-11 ["SPalign for RNA"](/slides/180725_spalign.html)

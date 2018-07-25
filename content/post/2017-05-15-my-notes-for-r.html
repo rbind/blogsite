@@ -20,7 +20,8 @@ tags:
 <p>So I compressed a tab file(MAF file, ~ 1.5G ) and tried to read it using <code>fread</code> and <code>read.table</code>.</p>
 <ul>
 <li><p><code>fread</code> failed.</p></li>
-<li><p><code>read.table</code> succeeded, but only half of the rows are read in. What’s worse, when tried to generate a table using <code>table(df$XXX)</code>, the R session ate up all my memory and crushed.</p></li>
+<li><p><code>read.table</code> succeeded, but only half of the rows are read in.
+What’s worse, when tried to generate a table using <code>table(df$XXX)</code>, the R session ate up all my memory and crushed.</p></li>
 </ul>
 <p>And it turns out to be a missing option <code>quote=&quot;\&quot;&quot;</code> in the command <code>read.table</code>.</p>
 </div>

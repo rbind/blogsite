@@ -1,0 +1,104 @@
+---
+title: "SPalign for RNA"
+author: "TC"
+date: "2018/07/11"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE,fig.height=7,fig.width=9, fig.align='center', echo=FALSE)
+
+library(tidyverse)
+library(gridExtra)
+```
+
+
+
+## Background
+
+- SPalign_RNA: a tool for RNA structure alignment.
+
+- What's changed
+    - Secondary Structure implemented
+    - **NOT** using dot-bracket notation, eg: `((((....))))`, because:
+
+--
+    
+```{r fig.align='center',fig.height=3, echo=FALSE}
+knitr::include_graphics("http://docs.x3dna.org/images/1qp5-WCx.png")
+```
+
+
+---
+
+##  SCOR Benchmark
+
+- SCOR(Tamura, 2004): Structural Classification of RNA similar to SCOP
+    - Used as benchmark in RMscore(Z Jinfang, 2018), SARA (E Capriotti, 2009)
+    - non-redundant 418 structures, 168 classes
+        - X-Ray 170
+        - NMR 175
+    - Not updated since 2004
+      
+.footnote[Tamura, Makio, et al. "SCOR: Structural Classification of RNA, version 2.0." Nucleic acids research 32.suppl_1 (2004): D182-D184.]
+--
+
+- Some problem:
+    - X-Ray has multiple models in PDB,  parser used in `dfire`, `spalign` will read all the atoms.
+    - SCOR classification info not complete, unable to reproduce results in the SARA paper
+    
+---
+
+## Over all 
+
+```{r, fig.align='center', warning=FALSE,echo=FALSE,fig.height= 5,cache=TRUE}
+load("~/GIT/spalign/SPalignNS/tmpdata/gg1.rda")
+
+gg
+```
+
+
+
+---
+
+## Leave-One-Out Test
+
+- Accuracy reported in SARA paper  : 81.4%,
+
+- But
+
+
+```{r echo=FALSE}
+tmp <- readRDS("~/GIT/spalign/SPalignNS/tmpdata/leave1out_test.rds")
+
+row.names(tmp) <- NULL
+knitr::kable(tmp,format = "markdown")
+```
+
+- SPscore(e) achieves comparable accuracy to SARA_LPSS, 
+
+```
+LPID:  Negative logarithm of sequence identity p-value
+LPSS:  Negative logarithm of secondary structure identity p-value
+LPSI:  Negative logarithm of structural identitiy p-value
+MLN:   Mean Negative logarithm of PID, PSS and PSI 
+```
+
+
+
+---
+
+## Next report
+
+- SPalign 
+    - better annotation of fscor dataset 
+- dfire_rna
+    - torsion angle term 
+    - polar atom term
+    - base-pair term (Peng)

@@ -1,0 +1,33 @@
+---
+title: Notes on Multithreading in C++
+author: TC
+date: '2018-07-19'
+slug: multithreading-in-c
+categories:
+  - c++
+  - programming
+tags:
+  - trivial
+---
+
+
+
+<p>My notes during learning about implementing multithreading within c++.</p>
+<div id="openmp" class="section level2">
+<h2>OpenMP</h2>
+<p>use -fopenmp in compilation to enable it. later gcc usually support it example:</p>
+<pre class="c"><code>g++ tmp.cpp -fopenmp</code></pre>
+<p>OpenMP uses <code>#pragma xxxx</code> to support parallelization, the benefit is that the programme can be compiled and get the same result when the compiler does not support it, they will be ignored.</p>
+</div>
+<div id="thread-class-in-c11" class="section level2">
+<h2>Thread class in C++11</h2>
+<p>From <a href="https://www.geeksforgeeks.org/multithreading-in-cpp/">here</a>:</p>
+<p>Basically, it introduces a new class: <code>std::thread</code>, with a member: <code>callable object</code>. Once a new thread object is created, a new thread is launched and the callable object is executed.</p>
+<p>callable object = a function pointer or a function object.</p>
+<p>e</p>
+<pre><code>import&lt;thread&gt;
+
+</code></pre>
+<p>Summary:</p>
+<p>For me , openmp seems to be a better choice if I want to speed things up while not rewrite alot, thread in c++11 provides better control of each thread (like wait it to finish), which is too much.</p>
+</div>
