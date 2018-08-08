@@ -1,0 +1,138 @@
+---
+title: "DFIRE_RNA: DFIRE Energy for RNA Structures"
+subtitle: "dihedral & dipolar term"
+author: "TC"
+date: "2018-08-01 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+load("~/GIT/dfire_rna2/tmpdata/gg_dihedral.rda")
+load("~/GIT/dfire_rna2/tmpdata/decoy1.rda")
+load("~/GIT/dfire_rna2/tmpdata/decoyfinal.rda")
+```
+
+
+
+
+## Background
+
+- Goal: Estimate the thermal stability of RNA molecules.
+--
+
+- Energy terms:
+    - Atom-atom distance term
+        - dipolar atom term: specific for polar atoms (N, P, O)
+    - **Dihedral angle term**
+    - **dipolar atom term**
+---
+
+## Dataset
+
+- All X-ray structures
+
+
+
+---
+
+## Dihedral Energy Term
+
+- Term:
+
+$$E_{\theta} = -RT\sum_{i }^{L}{ln\frac{P_{obs_i}(\theta)}{P_{exp_i}(\theta)}}$$
+
+- Example: 
+
+```{r fig.height=5, echo = FALSE, fig.align='center', warning=FALSE}
+plotit <- function(X){
+  
+  gg1 <- ggplot(gg_data,aes(x,y))+geom_point()+geom_line()+xlab("angle")+ylab("ref")
+  gg2 <- ggplot(gg_data2,aes_string("x",X))+geom_point(color = "red")+geom_line(color = "red") + ylab("energy")+xlab("angle") 
+  gg3 <- ggplot(gg_data3,aes_string("x",X))+geom_point()+geom_line()+ ylab("count")+xlab("angle")+scale_y_log10()
+  dih.ref <- list(gg1,gg2,gg3)
+  
+  do.call(gridExtra::grid.arrange, dih.ref)
+}
+
+tmpl <- colnames(gg_data2)[-8]
+
+plotit(tmpl[2])
+
+```
+
+
+---
+
+## Dipolar Energy Term
+
+- Polar Atoms p, q and the dipole-dipole reaction  -> $\theta_p$, $\theta_q$, $\theta_{pq}$
+
+```{r fig.height= 5,echo=FALSE, fig.align='center'}
+
+knitr::include_graphics("https://i.imgur.com/OUTbQgV.png")
+
+```
+
+---
+
+## Dipolar Energy Term
+
+- Bins: 
+    - distance: 30, 
+    - Angle( $\theta_p$, $\theta_q$, $\theta_{pq}$): 6 bins (0~180 degree) 
+
+- Term 
+    - Nonpolar atoms : original dfire
+    - Polar-polar atoms
+$$E_{pp}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{pq})}{P_{exp_i}(i,j,r,\theta_{pq})}}$$  
+    - Polar-nonpolar
+$$E_{pn}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{pq})}{P_{exp_i}(i,j,r,\theta_{p})}}$$  
+
+---
+## Decoy test
+
+- 85 decoy sets(500 decoys/1 native)
+    - topN: native found in the topN structure ranked by scores
+
+```{r echo=FALSE}
+
+
+new = data.frame(score="xprna_mod",top1 = 77, top5 = 83 , top10 =85)
+new2 = data.frame(score="dfire_dihedral",top1 = NA, top5 = NA , top10 =NA)
+new3 = data.frame(score="dfire_dipolar",top1 = NA, top5 = NA , top10 =NA)
+
+decoy2 <- rbind(decoy.final,new,new2,new3)
+
+knitr::kable(decoy2,format = "markdown")
+
+```
+
+
+
+
+---
+
+## Decoy test
+
+```{r fig.height= 7,echo=FALSE, fig.align='center'}
+
+tmp
+
+```
+
+
+
+---
+## Ongoing
+
+- SPalign_rna benchmarking 
+
+- DFIRE_RNA benchmarking/testing

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DFIRE_RNA: DFIRE Energy for RNA Structures</title>
+    <meta charset="utf-8">
+    <meta name="author" content="TC" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# DFIRE_RNA: DFIRE Energy for RNA Structures
+## dihedral &amp; dipolar term
+### TC
+### 2018-08-01 (updated: 2018-08-08)
+
+---
+
+
+
+
+
+
+
+## Background
+
+- Goal: Estimate the thermal stability of RNA molecules.
+--
+
+- Energy terms:
+    - Atom-atom distance term
+        - dipolar atom term: specific for polar atoms (N, P, O)
+    - **Dihedral angle term**
+    - **dipolar atom term**
+---
+
+## Dataset
+
+- All X-ray structures
+
+
+
+---
+
+## Dihedral Energy Term
+
+- Term:
+
+`$$E_{\theta} = -RT\sum_{i }^{L}{ln\frac{P_{obs_i}(\theta)}{P_{exp_i}(\theta)}}$$`
+
+- Example: 
+
+&lt;img src="180808_dfire_rna_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Dipolar Energy Term
+
+- Polar Atoms p, q and the dipole-dipole reaction  -&gt; `\(\theta_p\)`, `\(\theta_q\)`, `\(\theta_{pq}\)`
+
+&lt;img src="https://i.imgur.com/OUTbQgV.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Dipolar Energy Term
+
+- Bins: 
+    - distance: 30, 
+    - Angle( `\(\theta_p\)`, `\(\theta_q\)`, `\(\theta_{pq}\)`): 6 bins (0~180 degree) 
+
+- Term 
+    - Nonpolar atoms : original dfire
+    - Polar-polar atoms
+`$$E_{pp}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{pq})}{P_{exp_i}(i,j,r,\theta_{pq})}}$$`  
+    - Polar-nonpolar
+`$$E_{pn}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{pq})}{P_{exp_i}(i,j,r,\theta_{p})}}$$`  
+
+---
+## Decoy test
+
+- 85 decoy sets(500 decoys/1 native)
+    - topN: native found in the topN structure ranked by scores
+
+
+|score          | top1| top5| top10|
+|:--------------|----:|----:|-----:|
+|dfire_c        |   82|   83|    83|
+|dfire_v        |   83|   84|    84|
+|rasp           |   79|   81|    82|
+|rasp_clean     |   79|   81|    82|
+|rosetta        |   78|   80|    83|
+|3drnascore     |   80|   81|    82|
+|xprna          |   56|   80|    83|
+|xprna_mod      |   77|   83|    85|
+|dfire_dihedral |   NA|   NA|    NA|
+|dfire_dipolar  |   NA|   NA|    NA|
+
+
+
+
+---
+
+## Decoy test
+
+&lt;img src="180808_dfire_rna_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+## Ongoing
+
+- SPalign_rna benchmarking 
+
+- DFIRE_RNA benchmarking/testing
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
