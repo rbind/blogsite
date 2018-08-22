@@ -94,7 +94,7 @@ knitr::include_graphics("https://i.imgur.com/OUTbQgV.png")
     - Polar-polar atoms
 $$E_{pp}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{pq})}{P_{exp_i}(i,j,r,\theta_{pq})}}$$  
     - Polar-nonpolar
-$$E_{pn}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{pq})}{P_{exp_i}(i,j,r,\theta_{p})}}$$  
+$$E_{pn}(r_{ij}) = -RT{ln\frac{P_{obs}(i,j,r,\theta_{p})}{P_{exp_i}(i,j,r,\theta_{p})}}$$  
 
 ---
 ## Decoy test
@@ -128,6 +128,9 @@ tmp
 
 ```
 
+
+
+---
 
 
 ---
