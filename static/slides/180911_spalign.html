@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SPalign_RNA: SPalign for RNA Structures</title>
+    <meta charset="utf-8">
+    <meta name="author" content="TC" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# SPalign_RNA: SPalign for RNA Structures
+### TC
+### 2018-09-08 (updated: 2018-09-12)
+
+---
+
+
+
+
+
+class: center, middle, inverse
+
+## SPalign_RNA
+
+---
+
+## SPalign Performance Brought Down by Short RNAs
+
+.pull-left[
+&lt;img src="180911_spalign_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+&lt;img src="180911_spalign_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+- Left: SPe vs RMscore for RNA pairs from same/different functional class (blue/red)
+
+- Right: SPe vs RMscore for RNA pairs from **same functional class**, different lengths
+
+---
+
+## Examples
+
+.pull-left[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://i.imgur.com/ZSurI4N.png" alt="2iz9_S     1zdi_S" width="300px" height="300px" /&gt;
+&lt;p class="caption"&gt;2iz9_S     1zdi_S&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://i.imgur.com/OG2mSlk.png" alt="2c50_S      2c4z_S" width="300px" height="300px" /&gt;
+&lt;p class="caption"&gt;2c50_S      2c4z_S&lt;/p&gt;
+&lt;/div&gt;
+]
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; PDB1 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; PDB2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SPe &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Nali &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; RMSD &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SO &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TM &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GDT &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SEQ &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2iz9_S.pdb &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1zdi_S.pdb &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.383 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.842 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76.923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.100 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.615 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.231 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2c50_S.pdb &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2c4z_S.pdb &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.841 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81.818 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.315 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.773 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 45.455 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## Grid Search for `\(\alpha\)` , `\(d_0\)`
+
+- SPscore:
+
+`$$SPs = \frac{1}{3.75*L^{1-\alpha}} * \sum_{d_{ij} &lt; 2d_0}({\frac{1}{1+\frac{d_{ij}^2}{d_{0}^2}}} - 0.2)$$`
+
+- Search for `\(\alpha\)` , `\(d_0\)` to discriminate positive (RNA with same function) and negative (RNA with different function) samples
+
+---
+
+## AUC
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180911_spalign_files/figure-html/unnamed-chunk-6-1.png" alt="AUC"  /&gt;
+&lt;p class="caption"&gt;AUC&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+## MCC
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180911_spalign_files/figure-html/unnamed-chunk-7-1.png" alt="MCC"  /&gt;
+&lt;p class="caption"&gt;MCC&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+## Accuracy
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180911_spalign_files/figure-html/unnamed-chunk-8-1.png" alt="Accuracy"  /&gt;
+&lt;p class="caption"&gt;Accuracy&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+## Grid Search Summary
+
+- Comparing `\(\alpha = 0.1, d_0 = 10\)` and `\(\alpha = 0.3, d_0 = 4\)` (default)
+
+- "bad becomes worse"
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="180911_spalign_files/figure-html/unnamed-chunk-9-1.png" alt="top: RNA with diff functions (Negative) , bottom: same functions(Positive)"  /&gt;
+&lt;p class="caption"&gt;top: RNA with diff functions (Negative) , bottom: same functions(Positive)&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+## Grid Search Summary (2)
+
+- Short fragments not improved
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; GROUP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PDB1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PDB2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SPe &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Nali &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; RMSD &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SO &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TM &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GDT &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SEQ &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; a1d10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.29312 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.84368 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82.95052 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0702 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.59596 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53.36928 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; a3d4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.38420 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.31124 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83.51836 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.1270 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.65180 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58.49224 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

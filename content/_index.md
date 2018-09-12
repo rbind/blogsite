@@ -5,22 +5,18 @@ nocomment: true
 
 <img src=https://i.imgur.com/2NLJP8V.jpg" style="max-width:200px;min-width:40px;float:right; padding:10px; border-radius: 50%" />
 
-## TC's Another Random Blog 
+## TC's Another Random Blog
 
---- 
+---
 
-## Recent events  
+## Recent events
 
 Let's try this github calendar thing!
 
-
----  
-<!-- https://stackoverflow.com/questions/34516592/embed-github-contributions-graph-in-website -->
-
-<!-- Prepare a container for your calendar. -->
+<!-- Include the library. -->
 <script
-  src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js">
-</script>
+  src="https://ionicabizau.github.io/github-calendar/dist/github-calendar.min.js"
+></script>
 
 <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
 <link
@@ -35,7 +31,7 @@ Let's try this github calendar thing!
 </div>
 
 <script>
-    new GitHubCalendar(".calendar", "tcgriffith");
+    GitHubCalendar(".calendar", "tcgriffith");
 </script>
 
 ### Blog entries
