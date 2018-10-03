@@ -1,0 +1,200 @@
+---
+title: "SPalign_RNA: SPalign for RNA Structures"
+author: "TC"
+date: "2018-09-25 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.width = 7,
+  fig.height = 5,
+  fig.align = "center"
+)
+```
+
+class: center, middle, inverse
+
+## SPalign_RNA
+
+---
+
+## Comparison with RMalign
+
+- Random RNA pairs
+- pair_num: number of pairwise alignment performed
+- nali: number of alignment length (mean)
+- rmsd: root mean square deviation (mean)
+
+```{r}
+df <- read.csv("~/GIT/map_align/spalign_data/tmpdata/scor_seqid08_RM_SP.csv")
+
+df <- df[,-1]
+
+knitr::kable(df, format="html",digits = 3)
+```
+
+
+
+---
+## Nali & RMSD
+
+.pull-left[
+
+
+```{r fig.cap="Nali, x:spalign, y:rmalign"}
+load("~/GIT/map_align/spalign_data/tmpdata/rslt_rmsp.rda")
+rslt_rmsp$gg1
+```
+
+
+]
+
+.pull-right[
+```{r fig.cap="RMSD, x:spalign, y:rmalign"}
+rslt_rmsp$gg2
+```
+
+]
+
+--
+.foot-note[
+RMSDs not ideal.
+]
+
+---
+
+class: center, middle, inverse
+
+## Alignment by map_align
+
+---
+
+## Method
+
+- RNA contact map
+    - RNA base distance < 8.0A
+
+- map_align
+    - Using default parameters
+    - Total score = overlapping contacts - gap penalty 
+    
+- Test: Scor binary classification test
+
+---
+
+## Result - Scor binary classification test
+
+```{r}
+load("~/GIT/map_align/spalign_data/tmpdata/rslt.mapaln.rda")
+```
+
+```{r}
+knitr::kable(rslt.mapaln$dfall,format="markdown",digits = 3)
+```
+
+
+
+```{r fig.height=4, fig.width=8}
+rslt.mapaln$gg1
+```
+
+---
+
+## ROC
+
+```{r fig.width=11,fig.height=7}
+rslt.mapaln$ggroc
+```
+
+---
+
+## Score
+
+```{r fig.width=11,fig.height=7}
+rslt.mapaln$ggscore
+```
+
+--
+- Many false positives?
+
+
+---
+
+## Other Normalization
+
+.pull-left[
+- Unnormalized: $S_{Norm0}$
+    - $S_{Norm1}=\frac{S}{min(N_{contact1},N_{contact1})}$
+    - $S_{Norm2}=S_{Norm1}min(\frac{N_{contact}}{L})$
+    - $S_{Norm3}=\frac{S}{min(L_1,L_2)}$
+    - $S_{Norm3}=\frac{S}{min(L_1,L_2)^{0.7}}$
+    - $S_{Norm4}=\frac{S}{min(L_1,L_2)^{0.3}}$
+    - rm : rmalign score
+    - spe : spalign score
+]
+.pull-right[
+```{r}
+load("~/GIT/map_align/spalign_data/tmpdata/norm.rslt.rda")
+
+knitr::kable(norm.rslt$df,format="markdown",digits = 3)
+```
+]
+
+---
+
+## ROC curve
+
+```{r fig.width=9,fig.height=7}
+norm.rslt$gg
+```
+
+
+---
+## RNA Contact Map examples
+
+```{r}
+load("~/GIT/map_align/spalign_data/tmpdata/mymapgg.rda")
+```
+
+```{r message=FALSE}
+library(gridExtra)
+
+set.seed(123)
+id <- sample(1:length(mymapgg),12)
+
+grid.arrange(grobs=mymapgg[id],nrow=3)
+```
+
+
+---
+
+
+
+## Notes
+
+.pull-left[
+```{r}
+rslt.mapaln$ggcon1
+```
+]
+
+.pull-right[
+- Short RNAs 
+    - low contacts 
+    - Unable to generate meaningful contact-map align
+- Longer RNAs (30~)
+    - performance of map_align is still below spalign/mapalign
+]
+
+
+
