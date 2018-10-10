@@ -1,0 +1,424 @@
+---
+title: "DFIRE_RNA"
+subtitle: "An all-atom statistical energy function for RNA"
+author: "Tongchuan Zhang"
+date: "2018/10/10"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+knitr::opts_chunk$set(fig.align = "center", echo = FALSE, message=FALSE)
+```
+
+
+
+
+
+class: center, middle, inverse
+
+## *"Structure determines function."*
+
+## But what determines the structure?
+
+???
+
+- The answer is energy
+
+
+---
+
+## Energy Landscape - The Big Picture
+
+.pull-left[
+
+- Funnel Shape
+
+- Physical-based vs Knowledge-based
+
+- Conformation Space: X, Y; Potential Energy: Z
+$$Z(energy) = f(x,y)$$
+
+- DFIRE - An Energy Scoring Function
+
+]
+
+.pull-right[
+```{r}
+knitr::include_graphics("https://i.imgur.com/ewi2sII.gif")
+```
+]
+
+
+.footnote[
+##### Chan, *Proteins*, 1998
+]
+
+???
+
+
+
+- Horizontal x, y is the presentation of molecular conformation
+
+- the landscape forms a funnel, with native conformation lie at the bottom.
+
+- If you put a ball on the edge, it will slide to the bottom, just like the folding of proteins from unfolded state to a unique and well-packed native conformation.
+
+- Gibbs free energy
+
+---
+
+## Application
+- Prediction of Molecular Stability.
+
+> "What will happen if I mutate X residue in protein Y?"
+
+```{r fig.width= 7 ,fig.height=5, fig.cap= "A mutation(red) in protein 5CAJ"}
+# knitr::include_graphics("https://i.imgur.com/oV5AKsk.png")
+library(png)
+library(grid)
+
+img <- readPNG("~/Desktop/5caj_mutation.png")
+
+grid.raster(img)
+```
+
+
+---
+## Application
+- Structure Prediction/Fold Recognition
+
+> "I know the sequence of protein X, how's the structure look like?"
+
+.pull-left[
+
+```
+PRGSHMLILISPAKTLDYQSPLTTTRYTLPELL
+DNSQQLIHEARKLTPPQISTLMRISDKLAGINA
+ARFHDWQPDFTPANARQAILAFKGDVYTGLQAE
+TFSEDDFDFAQQHLRMLSGLYGVLRPLDLMQPY
+RLEMGIRLENARGKDLYQFWGDIITNKLNEALA
+AQGDNVVINLASDEYFKSVKPKKLNAEIIKPVF
+LDEKNGKFKIISFYAKKARGLMSRFIIENRLTK
+PEQLTGFNSEGYFFDEDSSSNGELVFKRYE
+```
+
+
+]
+
+.pull-right[
+
+
+```{r fig.width= 7 ,fig.height=5}
+# knitr::include_graphics("https://i.imgur.com/oV5AKsk.png")
+library(png)
+library(grid)
+
+img <- readPNG("~/Desktop/5caj_str.png")
+
+grid.raster(img)
+```
+
+]
+
+
+---
+
+class: center, middle, inverse
+
+## **DFIRE** 
+
+---
+
+## DFIRE algorithm (I)
+
+.pull-left[
+- Derived from Boltzmann Distribution:
+
+$$\frac{P(obs)}{P(ref)} = e^{-\frac{E_{obs}-E_{ref}}{kT}}$$
+
+- Energy estimated by distribution: 
+
+$$\Delta E = E_{obs}-E_{ref}=-kTln\frac{P(obs)}{P(ref)}$$
+
+]
+
+.pull-right[
+```{r}
+knitr::include_graphics("https://i.imgur.com/ewi2sII.gif")
+```
+]
+
+
+.footnote[
+##### Chan, *Proteins*, 1998
+]
+
+
+---
+
+## DFIRE algorithm (II)
+
+.pull-left[
+- The energy $\bar{e}(i,j,r)$ of a pair of atoms i, j with distance r:
+
+$$\bar{e}(i,j,r) = -kTln\frac{N_{obs}(i,j,r)}{N_{exp}(i,j,r)}$$
+
+- The energy of a molecule:
+
+$$E(molecule) = \sum_{pairs} \bar{e}(i,j,r)$$
+]
+
+.pull-right[
+
+```{r fig.width= 7 ,fig.height=5, fig.cap= "A pair of atoms in protein 5CAJ"}
+img <- readPNG("~/Desktop/5caj_pair.png")
+
+grid.raster(img)
+```
+
+]
+
+.footnote[
+##### H. Zhou and Y. Zhou, *Protein Science*, 2003
+]
+
+
+---
+
+## DFIRE algorithm (III)
+
+- New energy terms can be developed by similar strategy:
+
+.pull-left[
+
+```{r fig.height=2, fig.align='center', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/5i6ez2p.png")
+```
+
+- Dihedral angle energy
+
+- Angles $\alpha$ , $\beta$ , $\gamma$ , $\delta$ , $\epsilon$ , $\zeta$ , $\chi$ 
+
+$$\Delta e_i(\theta_a^i)=-k_BTln\frac{f_a^{OBS}(\theta^i_a)}{f_a^{REF}(\theta_a^i)}$$
+
+]
+
+.pull-right[
+
+```{r fig.height=2, fig.align='center', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/Qctgv5T.png")
+```
+
+
+- dipolar atom-pair energy
+
+- polar atom **p,q** and theta
+
+<div style = "font-size: 80%;">
+$$\Delta e_i^{dipolar}(\theta_a^i)=
+-k_BTln\frac{f_a^{OBS}(p,q, \theta_p,\theta_q,\theta_{pq},r)}{f_a^{REF}(p,q, \theta_p,\theta_q,\theta_{pq},r)}$$
+
+]
+</div>
+
+.footnote[
+##### Y.Yang, *Proteins*, 2008
+]
+
+---
+
+## Development history
+
+-  **First DFIRE**: DFIRE  (H.Zhou, *Protein Sci*, 2003)
+
+- **Loop selection**: DLOOP (C.Zhang, *Protein Sci*. 2004)
+
+- **Docking prediction**: ZDOCK (C.Zhang, *Proteins*, 2005)
+
+- **Fold helical proteins**: (H,Li, J. *Bioinfo. Comput. Biol.* 2005)
+
+-  **"dipolar" DFIRE**: dDFIRE (Y.Yang, *Proteins*, 2008)
+
+- **Updated version**: DFIRE2 (Y.Yang, *Protein Sci*, 2008)
+
+- **Prediction of DNA-binding proteins**: (H.Zhao, *Bioinformatics*, 2010)
+
+- **Sequence specific**: sDFIRE: (M.T. Hoque, *Journal of Computational Chemistry*, 2016)
+
+
+---
+
+class: center, middle, inverse
+
+
+## **DFIRE RNA**
+
+---
+## DFIRE RNA
+
+- Why RNA?
+
+- Goal of project
+
+    - Short term: An accurate scoring function
+    
+    - Long term: RNA structure prediction, RNA design
+    
+- Method
+
+    - Build upon DFIRE, with similar algorithm
+    
+    - Adopt various energy terms
+        - atom pairs 
+        - dihedral angles 
+        - dipolar atom pairs
+        - base-pairing & base-stacking effect
+    
+    - Fine-tuning (in progress)
+    
+---
+## Preliminary Results (I)
+
+.pull-left[
+- Decoy selection test
+    - Test if the score can identify native structure from decoys.
+
+- 85 decoy sets:
+    - 1 native RNA structure 
+    - 500 non-native RNA structure "decoys"
+    
+- Energy functions compared:
+    - rasp 
+    - rosetta 
+    - 3drnascore 
+]
+
+
+.pull-right[
+```{r fig.width=5,fig.asp=0.5,fig.align='center'}
+library(ggplot2)
+load("~/GIT/dfire_rna2/tmpdata/decoy1_new.rda")
+
+tmp +theme(legend.position="top")
+```
+
+```{r}
+
+load("~/GIT/dfire_rna2/tmpdata/decoyfinal.rda")
+
+decoy.final2 <- decoy.final %>% filter(score %in% c("dfire_v","rasp", "rosetta", "3drnascore"))
+
+decoy.final2$score[1] = "dfire_rna"
+
+knitr::kable(decoy.final2,format="html")
+```
+
+]
+
+.footnote[
+###### Capriotti E., 2011; Das R., 2010; Wang, 2015
+]
+
+---
+
+## Preliminary Results (II)
+
+.pull-left[
+- Near-native scoring test
+    - Correlation between energy and structural similarity to native structure
+    
+```{r warning = FALSE}
+load("~/GIT/dfire_rna2/dataset/decoy_test/gg2l.rda")
+
+tmp <- gg2l$gg2$data %>%
+  spread(key=type, value = CORR)
+
+
+
+tmp.final <- gg2l$gg2$data %>%
+  group_by(type) %>%
+  summarise(`COR*` = median(CORR))
+
+
+
+tmp.paired_t <- sapply(tmp.final$type, function(x){
+  return(t.test(tmp[,x],tmp[,"DFIRE_RNA"],paired = TRUE)$p.value)
+})
+
+tmpdf <- data.frame(type = tmp.final$type, pvalue =tmp.paired_t)
+
+tmp.final2 <- tmp.final %>%
+  left_join(tmpdf) %>%
+  mutate(pvalue =format(pvalue, digits = 3)) %>%
+  rename("pvalue**"=pvalue)
+# tmp.final$type
+
+knitr::kable(tmp.final2, format = "html", digits=3)
+
+```
+
+
+###### * Median Correlation (spearman) of energy with structural similarity (RMSD)
+###### ** paired-t test of DFIRE_RNA energy with other energy scores  
+
+
+]
+
+
+.pull-right[
+
+```{r fig.width=5,fig.asp=0.5,fig.align='center'}
+library(ggplot2)
+
+
+meds <- gg2l$meds
+
+gg2 <- gg2l$gg2
+
+gg2+xlab("")
+# tmp +theme(legend.position="top")
+```
+
+
+
+
+```{r fig.width=5,fig.asp=0.5,fig.align='center'}
+gg2l$gg3
+```
+
+
+]
+
+---
+
+## What's Next
+
+- In this project
+
+    - Fine tuning of paramters
+    
+    - New energy terms
+    
+    - New tests/benchmarks
+
+- Next step
+
+    - RNA structure prediction/Modelling
+
+    - RNA design
+
+---
+class: center, middle, inverse
+
+## Questions?
+
+

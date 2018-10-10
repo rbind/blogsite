@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DFIRE_RNA</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tongchuan Zhang" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# DFIRE_RNA
+## An all-atom statistical energy function for RNA
+### Tongchuan Zhang
+### 2018/10/10
+
+---
+
+
+
+
+
+
+
+
+class: center, middle, inverse
+
+## *"Structure determines function."*
+
+## But what determines the structure?
+
+???
+
+- The answer is energy
+
+
+---
+
+## Energy Landscape - The Big Picture
+
+.pull-left[
+
+- Funnel Shape
+
+- Physical-based vs Knowledge-based
+
+- Conformation Space: X, Y; Potential Energy: Z
+`$$Z(energy) = f(x,y)$$`
+
+- DFIRE - An Energy Scoring Function
+
+]
+
+.pull-right[
+&lt;img src="https://i.imgur.com/ewi2sII.gif" style="display: block; margin: auto;" /&gt;
+]
+
+
+.footnote[
+##### Chan, *Proteins*, 1998
+]
+
+???
+
+
+
+- Horizontal x, y is the presentation of molecular conformation
+
+- the landscape forms a funnel, with native conformation lie at the bottom.
+
+- If you put a ball on the edge, it will slide to the bottom, just like the folding of proteins from unfolded state to a unique and well-packed native conformation.
+
+- Gibbs free energy
+
+---
+
+## Application
+- Prediction of Molecular Stability.
+
+&gt; "What will happen if I mutate X residue in protein Y?"
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="draft_files/figure-html/unnamed-chunk-2-1.png" alt="A mutation(red) in protein 5CAJ"  /&gt;
+&lt;p class="caption"&gt;A mutation(red) in protein 5CAJ&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+## Application
+- Structure Prediction/Fold Recognition
+
+&gt; "I know the sequence of protein X, how's the structure look like?"
+
+.pull-left[
+
+```
+PRGSHMLILISPAKTLDYQSPLTTTRYTLPELL
+DNSQQLIHEARKLTPPQISTLMRISDKLAGINA
+ARFHDWQPDFTPANARQAILAFKGDVYTGLQAE
+TFSEDDFDFAQQHLRMLSGLYGVLRPLDLMQPY
+RLEMGIRLENARGKDLYQFWGDIITNKLNEALA
+AQGDNVVINLASDEYFKSVKPKKLNAEIIKPVF
+LDEKNGKFKIISFYAKKARGLMSRFIIENRLTK
+PEQLTGFNSEGYFFDEDSSSNGELVFKRYE
+```
+
+
+]
+
+.pull-right[
+
+
+&lt;img src="draft_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+
+class: center, middle, inverse
+
+## **DFIRE** 
+
+---
+
+## DFIRE algorithm (I)
+
+.pull-left[
+- Derived from Boltzmann Distribution:
+
+`$$\frac{P(obs)}{P(ref)} = e^{-\frac{E_{obs}-E_{ref}}{kT}}$$`
+
+- Energy estimated by distribution: 
+
+`$$\Delta E = E_{obs}-E_{ref}=-kTln\frac{P(obs)}{P(ref)}$$`
+
+]
+
+.pull-right[
+&lt;img src="https://i.imgur.com/ewi2sII.gif" style="display: block; margin: auto;" /&gt;
+]
+
+
+.footnote[
+##### Chan, *Proteins*, 1998
+]
+
+
+---
+
+## DFIRE algorithm (II)
+
+.pull-left[
+- The energy `\(\bar{e}(i,j,r)\)` of a pair of atoms i, j with distance r:
+
+`$$\bar{e}(i,j,r) = -kTln\frac{N_{obs}(i,j,r)}{N_{exp}(i,j,r)}$$`
+
+- The energy of a molecule:
+
+`$$E(molecule) = \sum_{pairs} \bar{e}(i,j,r)$$`
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="draft_files/figure-html/unnamed-chunk-5-1.png" alt="A pair of atoms in protein 5CAJ"  /&gt;
+&lt;p class="caption"&gt;A pair of atoms in protein 5CAJ&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+.footnote[
+##### H. Zhou and Y. Zhou, *Protein Science*, 2003
+]
+
+
+---
+
+## DFIRE algorithm (III)
+
+- New energy terms can be developed by similar strategy:
+
+.pull-left[
+
+&lt;img src="https://i.imgur.com/5i6ez2p.png" style="display: block; margin: auto;" /&gt;
+
+- Dihedral angle energy
+
+- Angles `\(\alpha\)` , `\(\beta\)` , `\(\gamma\)` , `\(\delta\)` , `\(\epsilon\)` , `\(\zeta\)` , `\(\chi\)` 
+
+`$$\Delta e_i(\theta_a^i)=-k_BTln\frac{f_a^{OBS}(\theta^i_a)}{f_a^{REF}(\theta_a^i)}$$`
+
+]
+
+.pull-right[
+
+&lt;img src="https://i.imgur.com/Qctgv5T.png" style="display: block; margin: auto;" /&gt;
+
+
+- dipolar atom-pair energy
+
+- polar atom **p,q** and theta
+
+&lt;div style = "font-size: 80%;"&gt;
+`$$\Delta e_i^{dipolar}(\theta_a^i)=
+-k_BTln\frac{f_a^{OBS}(p,q, \theta_p,\theta_q,\theta_{pq},r)}{f_a^{REF}(p,q, \theta_p,\theta_q,\theta_{pq},r)}$$`
+
+]
+&lt;/div&gt;
+
+.footnote[
+##### Y.Yang, *Proteins*, 2008
+]
+
+---
+
+## Development history
+
+-  **First DFIRE**: DFIRE  (H.Zhou, *Protein Sci*, 2003)
+
+- **Loop selection**: DLOOP (C.Zhang, *Protein Sci*. 2004)
+
+- **Docking prediction**: ZDOCK (C.Zhang, *Proteins*, 2005)
+
+- **Fold helical proteins**: (H,Li, J. *Bioinfo. Comput. Biol.* 2005)
+
+-  **"dipolar" DFIRE**: dDFIRE (Y.Yang, *Proteins*, 2008)
+
+- **Updated version**: DFIRE2 (Y.Yang, *Protein Sci*, 2008)
+
+- **Prediction of DNA-binding proteins**: (H.Zhao, *Bioinformatics*, 2010)
+
+- **Sequence specific**: sDFIRE: (M.T. Hoque, *Journal of Computational Chemistry*, 2016)
+
+
+---
+
+class: center, middle, inverse
+
+
+## **DFIRE RNA**
+
+---
+## DFIRE RNA
+
+- Why RNA?
+
+- Goal of project
+
+    - Short term: An accurate scoring function
+    
+    - Long term: RNA structure prediction, RNA design
+    
+- Method
+
+    - Build upon DFIRE, with similar algorithm
+    
+    - Adopt various energy terms
+        - atom pairs 
+        - dihedral angles 
+        - dipolar atom pairs
+        - base-pairing &amp; base-stacking effect
+    
+    - Fine-tuning (in progress)
+    
+---
+## Preliminary Results (I)
+
+.pull-left[
+- Decoy selection test
+    - Test if the score can identify native structure from decoys.
+
+- 85 decoy sets:
+    - 1 native RNA structure 
+    - 500 non-native RNA structure "decoys"
+    
+- Energy functions compared:
+    - rasp 
+    - rosetta 
+    - 3drnascore 
+]
+
+
+.pull-right[
+&lt;img src="draft_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; score &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top10 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; dfire_rna &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; rasp &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; rosetta &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3drnascore &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+.footnote[
+###### Capriotti E., 2011; Das R., 2010; Wang, 2015
+]
+
+---
+
+## Preliminary Results (II)
+
+.pull-left[
+- Near-native scoring test
+    - Correlation between energy and structural similarity to native structure
+    
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; type &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; COR* &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; pvalue** &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3DRNASCORE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.870 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.51e-11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DFIRE_RNA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.841 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NaN &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; RASP &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.887 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7.44e-14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ROSETTA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.642 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7.87e-29 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+###### * Median Correlation (spearman) of energy with structural similarity (RMSD)
+###### ** paired-t test of DFIRE_RNA energy with other energy scores  
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="draft_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+
+&lt;img src="draft_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+---
+
+## What's Next
+
+- In this project
+
+    - Fine tuning of paramters
+    
+    - New energy terms
+    
+    - New tests/benchmarks
+
+- Next step
+
+    - RNA structure prediction/Modelling
+
+    - RNA design
+
+---
+class: center, middle, inverse
+
+## Questions?
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
