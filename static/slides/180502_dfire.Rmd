@@ -100,10 +100,17 @@ print(gg_decoy)
 
 ## near native test (COR)
 
+
+
 ```{r fig.height=6,fig.align='center', echo=FALSE, warning=FALSE}
 load(file="~/GIT/dfire_rna//dataset/decoy_test/tmp.rda")
 
 print(gg2)
+```
+
+
+```{r}
+gg2$data
 ```
 
 ---
