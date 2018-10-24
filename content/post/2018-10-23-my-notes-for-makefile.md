@@ -11,7 +11,7 @@ tags:
 
 Although `make` is part of the gnu toolset, its use is not restricted to compile a c++ program. make can be used to do various kinds of work.
 
-Here is my notes on makefile for my future self. I find it of great help to keep these notes handy. For example, I often come back for [this one](post/2018/03/27/bash-build-in-variables/)
+Here is my notes on makefile for my future self. I find it of great help to keep these notes handy. For example, I often come back for [this one](/post/2018/03/27/bash-build-in-variables/)
 
 
 ### Macro
