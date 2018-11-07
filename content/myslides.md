@@ -20,4 +20,5 @@ nocomment: 'true'
 - 2018-08-08 ["SPalign_RNA: SPalign for RNA Structures"](/slides/180821_dfire_spalign.html)
 - 2018-09-08 ["SPalign_RNA: SPalign for RNA Structures"](/slides/180911_spalign.html)
 - 2018-09-25 ["SPalign_RNA: SPalign for RNA Structures"](/slides/181003_spalign.html)
+- 2018-08-01 ["DFIRE_RNA: DFIRE energy for RNA structures"](/slides/181030_dfire.html)
 - 2018-10-10 ["DFIRE_RNA"](/slides/draft.html)
