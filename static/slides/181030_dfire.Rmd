@@ -1,0 +1,259 @@
+---
+title: "DFIRE_RNA: DFIRE energy for RNA structures"
+author: "TC"
+date: "2018-08-01 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(png)
+library(grid)
+knitr::opts_chunk$set(fig.align = "center", echo = FALSE, message=FALSE)
+```
+
+## Background: Energy Landscape
+
+.pull-left[
+
+- Funnel Shape
+
+- Physical-based vs Knowledge-based
+
+- Conformation Space: X, Y; Potential Energy: Z
+$$Z(energy) = f(x,y)$$
+
+- DFIRE - An Energy Scoring Function
+
+]
+
+.pull-right[
+
+```{r}
+knitr::include_graphics("https://i.imgur.com/ewi2sII.gif")
+```
+
+]
+
+---
+## DFIRE 
+
+### Distance Term
+
+.pull-left[
+- The energy $\bar{e}(i,j,r)$ of a pair of atoms i, j with distance r:
+
+$$\bar{e}(i,j,r) = -kTln\frac{N_{obs}(i,j,r)}{N_{exp}(i,j,r)}$$
+
+- The energy of a molecule:
+
+$$E(molecule) = \sum_{pairs} \bar{e}(i,j,r)$$
+]
+
+.pull-right[
+
+```{r fig.width= 7 ,fig.height=5, fig.cap= "A pair of atoms in protein 5CAJ"}
+
+img <- readPNG("~/Desktop/5caj_pair.png")
+
+grid.raster(img)
+```
+
+]
+
+---
+
+## DFIRE 
+
+### Dihedral & dipolar term
+
+
+.pull-left[
+
+```{r fig.height=2, fig.align='center', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/5i6ez2p.png")
+```
+
+- Dihedral angle energy
+
+- Angles $\alpha$ , $\beta$ , $\gamma$ , $\delta$ , $\epsilon$ , $\zeta$ , $\chi$ 
+
+$$\Delta e_i(\theta_a^i)=-k_BTln\frac{f_a^{OBS}(\theta^i_a)}{f_a^{REF}(\theta_a^i)}$$
+
+]
+
+.pull-right[
+
+```{r fig.height=2, fig.align='center', echo=FALSE}
+knitr::include_graphics("https://i.imgur.com/Qctgv5T.png")
+```
+
+
+- dipolar atom-pair energy
+
+- polar atom **p,q** and theta
+
+<div style = "font-size: 80%;">
+$$\Delta e_i^{dipolar}(\theta_a^i)=
+-k_BTln\frac{f_a^{OBS}(p,q, \theta_p,\theta_q,\theta_{pq},r)}{f_a^{REF}(p,q, \theta_p,\theta_q,\theta_{pq},r)}$$
+
+]
+</div>
+
+
+---
+
+## Performance Evaluation
+
+- Native Detection: 
+    - Identify native structure from non-native structures (decoys)
+
+- Near-native Detection: 
+    - Identify non-native structures closer to the native structure.
+
+- Test datasets
+
+```{r}
+decoydf = data.table::fread(
+"Dataset, native, decoy, note
+rnapot, 85, 500, an easy test
+farna, 20, ~500, rosetta decoys (500 lowest rosetta energy)
+farfar, 32, 4~16, rosetta decoys; RNA fragments (length: 6~23)
+RNA-puzzle, 17, 13~70, 17 problems; submitted structures as decoys"
+)
+
+knitr::kable(decoydf,format="html")
+```
+
+---
+
+## Rnapot dataset
+
+.pull-left[
+- native detection
+    - One structure too long(> 2700nt), discarded.
+]
+
+.pull-right[
+
+```{r}
+
+load("~/GIT/dfire_rna2/dataset/tmpdata/rslt.rnapot.rda")
+
+rownames(rslt.rnapot$table) = NULL
+knitr::kable(rslt.rnapot$table,format="html")
+```
+
+]
+
+
+---
+## RNA-puzzle Dataset
+.pull-left[
+
+- Native Detection
+- DFIRE:  
+    - Distance Term: dist
+    - Dihedral Term: dih
+    - Dipolar Terms:
+        - Polar_non-polar: dipo_pn
+        - Polar_polar: dipo_pp
+- Normalization: energy per nucleotide
+    - native sequence not matching
+- Other scores:  
+    - 3drnascore
+    - rasp
+    - rosetta 
+]
+
+.pull-right[
+```{r echo=FALSE}
+load("~/GIT/dfire_rna2/dataset/tmpdata/rnapuzzle.rslt.rda")
+
+
+rnapuzzle.final = 
+  rnapuzzle.rslt[c(-1,-2,-7, -8),]
+
+row.names(rnapuzzle.final) = NULL
+knitr::kable(rnapuzzle.final,format="html")
+```
+
+]
+
+---
+
+## Farna dataset
+
+.pull-left[
+
+- Native Detection
+
+- 20 native
+
+- NMR structures performs bad:
+
+```{r}
+load("~/GIT/dfire_rna2/dataset/tmpdata/df.anno.rslt.exp.rda")
+
+mytbl = table (df.anno.rslt.exp$has.native, df.anno.rslt.exp$expmethod)
+knitr::kable(mytbl,format="html")
+```
+
+has.native : TRUE if native structure is in top 10 energy preferred models (dfire dist)
+]
+
+
+.pull-right[
+```{r}
+load("~/GIT/dfire_rna2/dataset/tmpdata/farna.rslt.rda")
+
+row.names(farna.rslt) = NULL
+knitr::kable(farna.rslt,format="html")
+```
+]
+
+
+
+
+
+
+---
+
+## Farfar dataset
+
+.pull-left[
+
+- Native detection
+
+- farfar, 
+    - native 32, 
+    - decoy 4~16, 
+    - rosetta decoys; RNA fragments (length: 6~23)
+
+
+]
+
+
+.pull-right[
+
+```{r}
+load("~/GIT/dfire_rna2/dataset/tmpdata/data_farfar.anno.rslt_nd.rda")
+
+decoyfarfar = data_farfar.anno.rslt_nd[c(-6,-7),]
+
+rownames(decoyfarfar) = NULL
+
+
+knitr::kable(decoyfarfar,format="html")
+```
+
+]
+
+
