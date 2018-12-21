@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Summary of 2018</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tongchuan Zhang" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# My Summary of 2018
+### Tongchuan Zhang
+### 2018/12/10 (updated: 2018-12-21)
+
+---
+
+
+
+
+
+class: center, middle, inverse
+### Progress bar for 2018：▓▓▓▓▓▓▓▓▓▓▓▓▓▓░     97%
+
+
+---
+
+class: bottom, right, inverse
+
+# Projects
+
+---
+
+# Cancer mutation analysis
+
+.footnote[
+*In collaboration with Prof. Jiri Neuzil
+]
+
+- What  
+    - Cancer cells without mitochondrial DNA do not form tumors unless they can highjack host mitochondria.  
+    - Colleagues pinned down to gene DHODH (and its pathway).  
+    - Our data analysis implies that the mutation rate of DHODH and related genes are below-average, which supports the argument that these genes may be important to tumor development.  
+
+- Status: paper published
+- Things learned:
+    - Mutation data analysis
+    - Use of SQL to handle large dataset
+
+---
+# DFIRE_RNA
+
+- What
+    - RNA can form tertiary 3D structures and biological functions
+    - experimental RNA structures are limited -&gt; build computational RNA models
+    - DFIRE_RNA is an RNA statistical energy function to evaluate RNA models.
+
+--
+
+- Status: 
+    - Drafting the paper
+
+--
+
+- Things learned:
+    - lots, lots of C++ stuff
+    - Not procrastinate and push forward.
+    - how to handle `stack overflow` and `segmentation fault`
+
+
+---
+# SPalign_RNA
+
+- What
+    - A tool to evaluate structure similarity between RNA structures.
+
+--
+
+- Output: 
+    - temporarily paused because RMalign performs better (longer alignment length with lower RMSD)
+
+--
+
+- Things learned:
+    - Built upon Peter's codebase 
+    - Dynamic programming, sequence alignment algorithms
+
+---
+
+.footnote[
+*In collaboration with Jaswinder
+]
+
+# RNA secondary structure prediction
+
+
+- What
+    - To further improve the RNA SS prediction 
+    
+    
+- Status: started
+
+---
+
+# Summary
+
+- Things I think I'm doing good
+    - Regular physical exercises (Thanks, XP &amp; Hector!)
+    - Get 1637 reputation on Stack overflow
+    - I'm a fast learner
+        - HTML+CSS+JS
+        - Japanese
+        - All things related to R
+
+- There are still lots of things I need to improve
+    - Stop procrastinating and do the real work
+    - Make moves quicker &amp; communicate more.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
