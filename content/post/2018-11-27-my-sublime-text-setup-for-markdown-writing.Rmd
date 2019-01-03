@@ -7,6 +7,7 @@ categories:
   - markdown
 tags:
   - notes
+draft: true
 ---
 
 I've been using Sublime Text as my main editor for a long time. But sometimes when I upgrade my system or use it on a new machine, my perfect setup would be lost. 
