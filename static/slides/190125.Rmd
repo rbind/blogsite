@@ -1,7 +1,7 @@
 ---
 title: "DFIRE_RNA: DFIRE energy for RNA structures"
 author: "TC"
-date: "2018-08-01 (updated: `r Sys.Date()`)"
+date: "2019-01-25 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
