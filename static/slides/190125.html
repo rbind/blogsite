@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DFIRE_RNA: DFIRE energy for RNA structures</title>
+    <meta charset="utf-8">
+    <meta name="author" content="TC" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# DFIRE_RNA: DFIRE energy for RNA structures
+### TC
+### 2018-08-01 (updated: 2019-01-25)
+
+---
+
+
+
+
+
+
+
+
+
+
+
+## DFIRE RNA
+
+
+
+---
+
+## Results - identifying native structures
+
+
+&lt;img src="190125_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+
+
+## Results - Ranking near-native structures
+
+### rnapot
+
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; score &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; enrich_score &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top10 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_rosetta &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.108 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.241 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.146 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.140 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_rasp &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.456 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.207 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.147 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.139 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_3drna &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.522 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.220 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.145 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.140 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_dfire &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.228 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.265 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.141 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+- All scores performs reasonably well in rnapot benchmark
+
+.footnote[
+* top1,5,10: lowest RMSD to native in top1/5/10 best structures.
+* Enrichment score: Intersection of top 10% lowest energy structures and top 10% near-native structures, range: 1~10
+]
+
+
+---
+
+## Results - Ranking near-native structures
+
+### RNA Puzzles
+&lt;table&gt;
+&lt;caption&gt;rna puzzles&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; score &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; enrich_score &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; top10 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_rosetta &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.810 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.181 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_rasp &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.726 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.181 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_3drna &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.369 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.289 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.181 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; score_dfire &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.856 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.638 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.895 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.728 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+- DFIRE improves over other scores on RNA puzzle benchmark.
+
+---
+
+## RNA puzzles enrichment score
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; grp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; score_dfire &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; score_3drna &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; score_rasp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; score_rosetta &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0007 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0012 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.762 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.174 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0014Bound &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.222 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.222 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.222 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.222 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.538 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0017 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.754 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.509 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.556 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Problem0019 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## Ongoing
+
+- DFIRE_rna finalize
+    - data/program cleanup
+
+- RNA SS prediction
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
