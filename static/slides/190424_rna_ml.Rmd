@@ -1,0 +1,224 @@
+---
+title: "Work Report: Extracting RNA evolution constrains using DCA"
+author: "TC"
+date: "2019-04-24 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    bibliography: zotero.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+
+source("~/GIT/rna_ml/R/misc.R")
+source("~/GIT/rna_ml/R/riboswitch_funcs.R")
+source("~/GIT/rna_ml/R/initial_models.R")
+```
+
+
+
+## Background
+
+```{r echo = FALSE}
+load("~/GIT/rna_ml/rdata/test.l.mapped.entr")
+load("~/GIT/rna_ml/rdata/test.l.wdca")
+```
+
+- RNA contact pairs are 'mostly' pairs
+
+- x: distance, y: Direct information(DCA)
+
+```{r fig.align='center', fig.height=5, fig.width=7}
+  test.l.mapped.entr[[3]] %>% 
+  mutate(rankdca = rank(-DCA), rankwmi = rank(-wMI), rankmi = rank(-MI)) %>%
+   filter(dist < 20) %>%
+  filter(entropy > 0.5) %>%
+  filter(!is.na(dist)) %>%
+  filter(abs(V1-V2) >= 5) %>%
+  # filter(DCA > 0.5)
+  ggplot(aes(x=dist,y=DCA))+geom_point(aes(color =pair > 0))
+```
+
+
+---
+
+## Method
+
+- dataset: 6 RNA riboswitches with 45~434 NTs
+
+- Models
+  - Direct Information(DI) from Direct Coupling Analysis(DCA)
+    $$DI(X;Y) = \sum_{x,y} P_{XY}(x,y) \log{P_{XY}(x,y) \over P_X(x) P_Y(y)}$$
+  - weighted DI ( $W(wcpair) = 1, W(notpair) = 0$ )
+    $$wDI(X;Y) = \sum_{x,y} W*P_{XY}(x,y) \log{P_{XY}(x,y) \over P_X(x) P_Y(y)}$$
+  - last report:
+      - Mutual Information (MI between column X and Y:)
+      - weighted Mutual Information
+      - Shuffle_model
+
+---
+
+## Results 1
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[1]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[1]])
+```
+
+]
+
+---
+
+## Results 1
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[1]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+
+- Sequence number: 110
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[1]])
+```
+
+]
+
+---
+
+## Results 2
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[2]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+
+- Sequence number: 434
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[2]])
+```
+
+]
+
+---
+
+## Results 3
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[3]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+
+- Sequence number: 134
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[3]])
+```
+
+]
+
+---
+
+## Results 4
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[4]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+
+- Sequence number: 45
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[4]])
+```
+
+]
+
+---
+
+## Results 5
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[5]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+
+- Sequence number: 156
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[5]])
+```
+
+]
+
+---
+
+## Results 6
+
+.pull-left[
+```{r}
+bench.metr4(test.l.wdca[[6]]) %>%
+  select(-acc) %>%
+  knitr::kable(digits = 3,format="markdown")
+```
+
+- Sequence number: 288
+]
+
+.pull-right[
+```{r}
+bench.roc(test.l.wdca[[6]])
+```
+
+]
+
+---
+
+## Summary
+
+- wDCA seems to be performing well in identifying native pairs
+
+---
+## Ongoing
+
+- Project 1, Improving DFIRE energy functions
+
+- Project 2, RNA evolution couplings from MSA
+
+- Thesis review milestone

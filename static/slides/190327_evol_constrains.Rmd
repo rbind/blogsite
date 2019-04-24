@@ -14,6 +14,8 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+
 ```
 
 
@@ -24,6 +26,8 @@ knitr::opts_chunk$set(echo = TRUE)
   - Mutual Information (MI)
   - weighted Mutual Information ( $W_{wcpair} = 1, W_{notpair} = 0$ )
   - Shuffle_model
+
+- Test
 
 ---
 

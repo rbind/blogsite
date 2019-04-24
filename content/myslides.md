@@ -26,4 +26,5 @@ nocomment: 'true'
 - 2019-01-25 ["DFIRE_RNA: DFIRE energy for RNA structures"](/slides/190125.html)
 - 2019-02-20 ["Work Report"](/slides/190220_atarashi.html)
 - 2019-03-27 ["Work Report"](/slides/190327_evol_constrains.html)
+- 2019-04-24 ["Work Report: Extracting RNA evolution constrains using DCA"](/slides/190424_rna_ml.html)
 - 2018-10-10 ["DFIRE_RNA"](/slides/draft.html)

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Work Report: Extracting RNA evolution constrains using DCA</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="TC" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Work Report: Extracting RNA evolution constrains using DCA
+### TC
+### 2019-04-24 (updated: 2019-04-24)
+
+---
+
+
+
+
+
+
+## Background
+
+
+
+- RNA contact pairs are 'mostly' pairs
+
+- x: distance, y: Direct information(DCA)
+
+&lt;img src="190424_rna_ml_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Method
+
+- dataset: 6 RNA riboswitches with 45~434 NTs
+
+- Models
+  - Direct Information(DI) from Direct Coupling Analysis(DCA)
+    `$$DI(X;Y) = \sum_{x,y} P_{XY}(x,y) \log{P_{XY}(x,y) \over P_X(x) P_Y(y)}$$`
+  - weighted DI ( `\(W(wcpair) = 1, W(notpair) = 0\)` )
+    `$$wDI(X;Y) = \sum_{x,y} W*P_{XY}(x,y) \log{P_{XY}(x,y) \over P_X(x) P_Y(y)}$$`
+  - last report:
+      - Mutual Information (MI between column X and Y:)
+      - weighted Mutual Information
+      - Shuffle_model
+
+---
+
+## Results 1
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.649| 0.938| 0.606|
+|MI      | 0.387| 0.811| 0.261|
+|wMI     | 0.553| 0.896| 0.500|
+|DCA     | 0.525| 0.949| 0.261|
+|wDCA    | 0.636| 0.962| 0.600|
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Results 1
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.649| 0.938| 0.606|
+|MI      | 0.387| 0.811| 0.261|
+|wMI     | 0.553| 0.896| 0.500|
+|DCA     | 0.525| 0.949| 0.261|
+|wDCA    | 0.636| 0.962| 0.600|
+
+- Sequence number: 110
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Results 2
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.737| 0.902| 0.737|
+|MI      | 0.445| 0.842| 0.125|
+|wMI     | 0.666| 0.890| 0.644|
+|DCA     | 0.555| 0.940| 0.465|
+|wDCA    | 0.631| 0.990| 0.565|
+
+- Sequence number: 434
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Results 3
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.641| 0.842| 0.619|
+|MI      | 0.580| 0.794| 0.526|
+|wMI     | 0.587| 0.818| 0.564|
+|DCA     | 0.653| 0.911| 0.652|
+|wDCA    | 0.609| 0.936| 0.541|
+
+- Sequence number: 134
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Results 4
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.472| 0.814| 0.400|
+|MI      | 0.177| 0.663|   NaN|
+|wMI     | 0.500| 0.785| 0.357|
+|DCA     | 0.301| 0.731| 0.083|
+|wDCA    | 0.453| 0.786| 0.231|
+
+- Sequence number: 45
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Results 5
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.640| 0.941| 0.629|
+|MI      | 0.539| 0.821| 0.444|
+|wMI     | 0.576| 0.899| 0.500|
+|DCA     | 0.692| 0.892| 0.645|
+|wDCA    | 0.730| 0.948| 0.703|
+
+- Sequence number: 156
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Results 6
+
+.pull-left[
+
+|        |   mcc|   auc|    f1|
+|:-------|-----:|-----:|-----:|
+|shuffle | 0.565| 0.835| 0.522|
+|MI      | 0.352| 0.721| 0.222|
+|wMI     | 0.499| 0.799| 0.400|
+|DCA     | 0.611| 0.800| 0.545|
+|wDCA    | 0.617| 0.860| 0.583|
+
+- Sequence number: 288
+]
+
+.pull-right[
+![](190424_rna_ml_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+## Summary
+
+- wDCA seems to be performing well in identifying native pairs
+
+---
+## Ongoing
+
+- Project 1, Improving DFIRE energy functions
+
+- Project 2, RNA evolution couplings from MSA
+
+- Thesis review milestone
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
