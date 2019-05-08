@@ -36,7 +36,7 @@ load("~/GIT/rna_ml/rdata/test.l.wdca")
 - x: distance, y: Direct information(DCA)
 
 ```{r fig.align='center', fig.height=5, fig.width=7}
-  test.l.mapped.entr[[3]] %>% 
+  test.l.mapped.entr[[1]] %>% 
   mutate(rankdca = rank(-DCA), rankwmi = rank(-wMI), rankmi = rank(-MI)) %>%
    filter(dist < 20) %>%
   filter(entropy > 0.5) %>%
