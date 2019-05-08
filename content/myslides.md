@@ -28,4 +28,4 @@ nocomment: 'true'
 - 2019-03-27 ["Work Report"](/slides/190327_evol_constrains.html)
 - 2019-04-24 ["Work Report: Extracting RNA evolution constrains using DCA"](/slides/190424_rna_ml.html)
 - 2018-10-10 ["DFIRE_RNA"](/slides/draft.html)
-- 2019-04-28 ["Thesis and Candidature Review Milestone Seminar"](/slides/Thesis&candidature.html)
+- 2019-04-28 ["Thesis and Candidature Review Milestone Seminar"](/slides/Thesis_candidature.html)
