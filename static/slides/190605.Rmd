@@ -12,54 +12,95 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE, cache= TRUE)
+# library(tidyverse)
+
+library(tidyverse)
+library(ggrepel)
+library(kableExtra)
+library(png)
+library(grid)
 ```
 
-## Background
+## Project
 
-- Physically interacting nucleotide pairs can be predicted by MSA
+- Benchmark Contact contact predictions on RNA
 
-- Methods:
-   - MI (local)
-   - DCA (global)
-       - inverting a generalized covariance matrix
-       - 
+---
+## Data
+
+- 51/99 RFAM families with structure
+   - 34 families: no X-RAY
+   - 14: mapping issues (sequence too long etc)
    
----
-## DCA
+- SS/contact annotation: x3dna-dssr/calculated my self
+
+- generateMSA: cmalign
 
 ---
-## Data Cleaning
 
-- 63/99 RFAM families with structure
-    - 34 families: no X-RAY DIFFRACTION structures,
-    - 2 families: RNA structure only "P", discarded
-    
-- 
-  
+## Methods
 
+.pull-left[
+1. Generate MSA for evolutionarily related RNAs
+2. Generate Predictive models 
+3. Infer model parameters
+]
 
+.pull-right[
 
----
-## Method
-- Generate MSA
-    - Get RNA sequence from PDB
-       - Annotate basepairs with x3dna-dssr
-       - Annotate distance contacts
-       - mapping PDB residues to
-    - Align RFAM family sequences to 
-       - Use cmalign from infernal
-       - Columns not appear in the PDB were dropped
-       - 
-    
+- Mutual Information
+- DCA
+  - mfDCA
+  - plmDCA
+  - gplmDCA
+  - GREMLIN
+  - plmc
+- Meta predictors (Next)
+  - PconsC (Random forest PSICOV+plmDCA)
+  - CCMpred
+  - MetaPSICOV
+  - MSAvolve 
+]
 
 
 ---
 ## Results
+Sensitivity 
+
+```{r fig.width= 8, fig.height=5,fig.align='center'}
+img <- readPNG("/home/tc/GIT/rna_ml/plots/p4.png")
+ grid.raster(img)
+```
 
 ---
-## Discussion
+## Results
+Precision
 
+```{r fig.width= 8, fig.height=5,fig.align='center'}
+img <- readPNG("/home/tc/GIT/rna_ml/plots/p3.png")
+ grid.raster(img)
+```
 
 ---
-## Ongoing
+## Results
+Effective MSA size, Length
+
+
+```{r fig.width= 8,fig.align='center'}
+img <- readPNG("/home/tc/GIT/rna_ml/plots/p2.png")
+ grid.raster(img)
+```
+
+---
+## Results
+Pairwise-comparison
+
+```{r fig.width= 8, fig.height=5,fig.align='center'}
+img <- readPNG("/home/tc/GIT/rna_ml/plots/p1.png")
+ grid.raster(img)
+```
+
+gplmDCA, gremlin and plmDCA are better than mfDCA and plmc
+
+

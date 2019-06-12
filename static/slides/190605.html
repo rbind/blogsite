@@ -20,33 +20,74 @@ class: center, middle, inverse, title-slide
 
 
 
-## Background
+## Project
+
+- Benchmark Contact contact predictions on RNA
 
 ---
 ## Data
 
+- 51/99 RFAM families with structure
+   - 34 families: no X-RAY
+   - 14: mapping issues (sequence too long etc)
+   
+- SS/contact annotation: x3dna-dssr/calculated my self
 
+- generateMSA: cmalign
 
 ---
-## Method
-- Generate MSA
-    - Get RNA sequence from PDB
-       - Annotate basepairs with x3dna-dssr
-       - Annotate distance contacts
-       - mapping PDB residues to
-    
-    - For each fa
+
+## Methods
+
+.pull-left[
+1. Generate MSA for evolutionarily related RNAs
+2. Generate Predictive models 
+3. Infer model parameters
+]
+
+.pull-right[
+
+- Mutual Information
+- DCA
+  - mfDCA
+  - plmDCA
+  - gplmDCA
+  - GREMLIN
+  - plmc
+- Meta predictors (Next)
+  - PconsC (Random forest PSICOV+plmDCA)
+  - CCMpred
+  - MetaPSICOV
+  - MSAvolve 
+]
 
 
 ---
 ## Results
+Sensitivity 
+
+&lt;img src="190605_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-## Discussion
+## Results
+Precision
 
+&lt;img src="190605_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-## Ongoing
+## Results
+Effective MSA size, Length
+
+
+&lt;img src="190605_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Results
+Pairwise-comparison
+
+&lt;img src="190605_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+gplmDCA, gremlin and plmDCA are better than mfDCA and plmc
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
