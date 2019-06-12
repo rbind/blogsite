@@ -5,3 +5,5 @@
 public
 test
 blogdown
+*pdf
+*_cache/

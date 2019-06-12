@@ -1,0 +1,65 @@
+---
+title: "Work Report: Evolutional couplings RNA"
+author: "TC"
+date: "6/5/2019"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+
+- Physically interacting nucleotide pairs can be predicted by MSA
+
+- Methods:
+   - MI (local)
+   - DCA (global)
+       - inverting a generalized covariance matrix
+       - 
+   
+---
+## DCA
+
+---
+## Data Cleaning
+
+- 63/99 RFAM families with structure
+    - 34 families: no X-RAY DIFFRACTION structures,
+    - 2 families: RNA structure only "P", discarded
+    
+- 
+  
+
+
+
+---
+## Method
+- Generate MSA
+    - Get RNA sequence from PDB
+       - Annotate basepairs with x3dna-dssr
+       - Annotate distance contacts
+       - mapping PDB residues to
+    - Align RFAM family sequences to 
+       - Use cmalign from infernal
+       - Columns not appear in the PDB were dropped
+       - 
+    
+
+
+---
+## Results
+
+---
+## Discussion
+
+
+---
+## Ongoing
