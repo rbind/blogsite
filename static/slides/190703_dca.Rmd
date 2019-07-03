@@ -1,0 +1,102 @@
+---
+title: "Work Report: Evolutional couplings RNA"
+author: "TC"
+date: "2019-07-03"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE, cache= TRUE)
+# library(tidyverse)
+
+library(tidyverse)
+library(ggrepel)
+library(kableExtra)
+library(png)
+library(grid)
+
+load("~/GIT/rna_ml/tmpdata/dfinfo.rda")
+load("~/GIT/rna_ml/tmpdata/sel1.data.l.anno.rda")
+```
+
+## Summary of DCA algorithm
+
+A sequence $a(a_1,a_2...a_N)$ with the $a_i$ representing aligned protein or RNA sequences, with q=20 or q=4 types of residues/nucleotides. the probability of $a$:
+
+![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0ab29952eb08598a2eaa7135860b33ec4feaf3e1)
+
+- J, h are the parameters of the DCA model
+   - $J_{i,j}$: couplings of position i and j
+   - $h_i$: field i
+- Z: partition func
+
+> The central point of DCA is to interpret the $J_{i,j}$ as the direct couplings between positions i and j. 
+
+As Z is difficult to calculate (sum of the probability of all possible sequences), many methods are developed to calculate the parameters 
+- number of J: $N*(N-1)/2*q*q$, 
+- h: $N*q$
+
+---
+
+## Inferences
+![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0ab29952eb08598a2eaa7135860b33ec4feaf3e1)
+
+## Mean-field 
+Rely on the inverse of the covariance matrix, the core idea is 
+to use the inverse the covariance matrix C
+
+$C_{i,j}(ai,aj) = f_{i,j}(ai,aj) -f_i(ai)*f_j(aj)$
+
+$J_{ij}(a_i,a_j) = -(C^{-1})_{i,j}(a_i,a_j)$
+
+where $f_i(ai)$ and $f_{i,j}(ai,aj)$ are the frequency counts
+
+### Pseudo-likelihood
+- Directly estimate the parameters, with L2 regularization to avoid overfitting.
+
+
+---
+
+## DCA in sequence analysis
+
+Proteins contact prediction
+
+- Mean-field
+  - mfDCA (2011, PNAS)
+  - PSICOV (2012, Bioinformatics)
+- Pseudo-likelihood
+  - GREMLIN (2013, PNAS, David Baker)
+  - plmDCA (2013, Phys Rev)
+      - gplmDCA (2014, PLoS computational biology)
+
+RNA contact prediction
+- Mean-field
+  - mfDCA (2015, NAR)
+- Pseudo-likelihood
+  - plmc (called EV-couplings) (2016, cell)
+
+---
+
+## Project
+
+- Comparison of current RNA contact prediction methods(mainly DCA)
+
+## Data
+- 51 RFAM families with structure
+
+
+---
+
+## Results
+[SS pairs & contact maps](/190702_sel1_analysis.html)
+
+
+
+
+
