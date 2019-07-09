@@ -68,18 +68,18 @@ where $f_i(ai)$ and $f_{i,j}(ai,aj)$ are the frequency counts
 Proteins contact prediction
 
 - Mean-field
-  - mfDCA (2011, PNAS)
-  - PSICOV (2012, Bioinformatics)
+  - mfDCA (Morcos, 2011, PNAS)
+  - PSICOV (Jones, D. T., 2012, Bioinformatics)
 - Pseudo-likelihood
-  - GREMLIN (2013, PNAS, David Baker)
-  - plmDCA (2013, Phys Rev)
-      - gplmDCA (2014, PLoS computational biology)
+  - GREMLIN (Kamisetty, H., 2013, PNAS)
+  - plmDCA (M Ekeberg, 2013, Phys Rev)
+      - gplmDCA (C Feinauer, 2014, PLoS computational biology)
 
 RNA contact prediction
 - Mean-field
-  - mfDCA (2015, NAR)
+  - mfDCA (De Leonardis, 2015, NAR)
 - Pseudo-likelihood
-  - plmc (called EV-couplings) (2016, cell)
+  - plmc (called EV-couplings) (Weinreb, 2016, cell)
 
 ---
 
