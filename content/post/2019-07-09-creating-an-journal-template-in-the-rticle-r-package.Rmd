@@ -1,0 +1,24 @@
+---
+title: Creating an journal template in the rticle R package
+author: TC
+date: '2019-07-09'
+slug: creating-an-journal-template-in-the-rticle-r-package
+categories:
+  - r
+tags:
+  - trivial
+draft: true
+---
+
+The rticle package is a nice package to prepare manuscripts for various journals.
+
+Recently I'm preparing my paper for submit but the journal is not on the template list.
+
+so why not do it myself?
+
+## Preparation
+
+## Process
+
+## Results
+

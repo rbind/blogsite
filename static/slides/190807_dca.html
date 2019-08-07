@@ -4,7 +4,7 @@
     <title>Work Report: Evolutional couplings RNA</title>
     <meta charset="utf-8" />
     <meta name="author" content="TC" />
-    <meta name="date" content="2019-07-03" />
+    <meta name="date" content="2019-08-07" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -14,83 +14,187 @@ class: center, middle, inverse, title-slide
 
 # Work Report: Evolutional couplings RNA
 ### TC
-### 2019-07-03
+### 2019-08-07
 
 ---
 
 
 
-
-## Summary of DCA algorithm
-
-A sequence `\(a(a_1,a_2...a_N)\)` with the `\(a_i\)` representing aligned protein or RNA sequences, with q=20 or q=4 types of residues/nucleotides. the probability of `\(a\)`:
-
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0ab29952eb08598a2eaa7135860b33ec4feaf3e1)
-
-- J, h are the parameters of the DCA model
-   - `\(J_{i,j}\)`: couplings of position i and j
-   - `\(h_i\)`: field i
-- Z: partition func
-
-&gt; The central point of DCA is to interpret the `\(J_{i,j}\)` as the direct couplings between positions i and j. 
-
-As Z is difficult to calculate (sum of the probability of all possible sequences), many methods are developed to calculate the parameters 
-- number of J: `\(N*(N-1)/2*q*q\)`, 
-- h: `\(N*q\)`
-
----
-
-## Inferences
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0ab29952eb08598a2eaa7135860b33ec4feaf3e1)
-
-## Mean-field 
-Rely on the inverse of the covariance matrix, the core idea is 
-to use the inverse the covariance matrix C
-
-`\(C_{i,j}(ai,aj) = f_{i,j}(ai,aj) -f_i(ai)*f_j(aj)\)`
-
-`\(J_{ij}(a_i,a_j) = -(C^{-1})_{i,j}(a_i,a_j)\)`
-
-where `\(f_i(ai)\)` and `\(f_{i,j}(ai,aj)\)` are the frequency counts
-
-### Pseudo-likelihood
-- Directly estimate the parameters, with L2 regularization to avoid overfitting.
-
-
----
-
-## DCA in sequence analysis
-
-Proteins contact prediction
-
-- Mean-field
-  - mfDCA (Morcos, 2011, PNAS)
-  - PSICOV (Jones, D. T., 2012, Bioinformatics)
-- Pseudo-likelihood
-  - GREMLIN (Kamisetty, H., 2013, PNAS)
-  - plmDCA (M Ekeberg, 2013, Phys Rev)
-      - gplmDCA (C Feinauer, 2014, PLoS computational biology)
-
-RNA contact prediction
-- Mean-field
-  - mfDCA (De Leonardis, 2015, NAR)
-- Pseudo-likelihood
-  - plmc (called EV-couplings) (Weinreb, 2016, cell)
-
----
 
 ## Project
 
-- Comparison of current RNA contact prediction methods(mainly DCA)
+- Background: RFAM families
+
+- Goal: A server that combines sequence profile building(MSAs) and RNA contact prediction (DCAs)
+
+- Rationale
+    - Currently there is no tool that combines both, for RNA.
+    
+    - RFAM's limitation for RNA with unknown family
+    
+---
+
+## Method
+
+.pull-left[
+#### blastn+ infernal pipeline
+
+1. input RNA sequence 
+
+1. Blastn + nt database -&gt; multiple sequence alignment (MSA) **1st MSA**
+
+1. SPOT-RNA -&gt; predicted Secondary structure(SS)
+
+1. infernal(cmbuild) + 1st MSA + predicted SS  -&gt; Covariance model(CM)
+
+1. infernal(cmsearch) + CM + nt database -&gt; **2nd MSA**
+
+1. 2ndMSA + DCA methods
+
+]
+
+.pull-right[
+#### RFAM pipeline
+
+1. input RNA sequence (query) (with known RFAM family mapping)
+
+1. infernal(cmalign) + prebuild CM + RFAM family sequence + query -&gt; MSA
+
+1. DCA methods + MSA 
+
+]
+
+---
+
+### Analysis step
+
+1. Mapping structure info 
+    - Distance (nearest-atom distance &lt; 8.0Å)
+    - Basepairs (using x3dna-DSSR)
+        - Canonical
+        - Non-Canonical
+
+1. Metrics
+    - Overall: pull all pairs 
+    - MCC, F1, Precision(TP/(TP+FP)), sensitivity(TP/(TP+FN)) at different cutoffs (1/10L, 1/4L, L)
+
+
+
+---
 
 ## Data
-- 51 RFAM families with structure
 
+Two RNA sequence dataset with known structure and known RFAM family
+
+- 35 RNA sequences from RFAM (**RFAM35**)
+    - 99 RFAM families has known PDB structures
+    - selected:
+        - X-Ray, Resolution &lt; 3.0Å
+        - RNA length between 32 ~ 300
+    - Status
+      - blastn + infernal pipeline (Jaswinder)
+          - Sequence issues, need
+      - rfam pipeline (TC) finished
+      
+- 37 RNA sequences as test set for SPOT-RNA (**TS37**)
+    - with known RFAM family
+    - not used in SPOT-RNA training, so SS prediction are not 
+    - Status
+      - blastn + infernal pipeline finished
+      - rfam pipeline finished
 
 ---
 
 ## Results
-[SS pairs &amp; contact maps](/190702_sel1_analysis.html)
+
+#### RF35 overall
+
+- Reported results are using top 0.35*L (max MCC)
+- TRUE: all basepairs identified by DSSR
+
+
+
+
+.pull-left[
+RFAM pipeline
+
+
+|method  |  mcc|   f1| prec| sens|
+|:-------|----:|----:|----:|----:|
+|plmdca  | 0.56| 0.56| 0.64| 0.49|
+|gremlin | 0.54| 0.54| 0.62| 0.48|
+|gplmdca | 0.54| 0.54| 0.62| 0.48|
+|plmc    | 0.50| 0.50| 0.58| 0.45|
+|mfdca   | 0.23| 0.23| 0.26| 0.21|
+
+
+]
+
+.pull-right[
+Blastn+infernal pipeline 
+
+|method  |  mcc|   f1| prec| sens|
+|:-------|----:|----:|----:|----:|
+|plmdca  | 0.57| 0.56| 0.69| 0.48|
+|gremlin | 0.55| 0.54| 0.66| 0.46|
+|gplmdca | 0.56| 0.56| 0.68| 0.47|
+|plmc    | 0.54| 0.54| 0.66| 0.46|
+|mfdca   | 0.32| 0.32| 0.38| 0.27|
+]
+---
+#### TS37 overall
+
+- Reported results are using top 0.35*L (max MCC)
+- TRUE: all basepairs identified by DSSR
+
+
+
+.pull-left[
+RFAM pipeline
+
+
+|method  |  mcc|   f1| prec| sens|
+|:-------|----:|----:|----:|----:|
+|plmc    | 0.61| 0.61| 0.72| 0.53|
+|plmdca  | 0.31| 0.31| 0.36| 0.27|
+|gremlin | 0.59| 0.59| 0.69| 0.51|
+|gplmdca | 0.31| 0.31| 0.37| 0.27|
+|mfdca   | 0.23| 0.23| 0.27| 0.20|
+
+
+]
+
+.pull-right[
+Blastn+infernal pipeline 
+
+|method  |  mcc|   f1| prec| sens|
+|:-------|----:|----:|----:|----:|
+|plmc    | 0.63| 0.63| 0.74| 0.54|
+|plmdca  | 0.65| 0.64| 0.76| 0.56|
+|gremlin | 0.62| 0.61| 0.72| 0.53|
+|gplmdca | 0.64| 0.64| 0.75| 0.55|
+|mfdca   | 0.41| 0.41| 0.49| 0.36|
+]
+
+* gplmDCA and plmdca were due to mapping errors, will update
+
+---
+
+## Issues
+
+- Mapping between structure &amp; sequence
+
+In RNAs, there does not exist a database like SIFTS that provides residue level mapping between PDB residue id and sequences. So we have to do the mapping.
+
+---
+
+## Next
+
+- Consolidate the data with Jaswinder(blastn pipeline data for RF35 and TS37)
+
+- Methods/Results sections
+
+- web server
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
