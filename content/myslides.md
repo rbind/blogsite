@@ -31,4 +31,5 @@ nocomment: 'true'
 - 2019-07-03 ["Work Report: Evolutional couplings RNA"](/slides/190703_dca.html)
 - 2019-08-07 ["Work Report: Evolutional couplings RNA"](/slides/190807_dca.html)
 - 2019-08-28 ["Work Report: Evolutional couplings RNA"](/slides/190828_RNACOUP.html)
+- 2019-09-18 ["Work Report: RNAcoup"](/slides/190912_RNACOUP.html)
 - 2019-04-28 ["Thesis and Candidature Review Milestone Seminar"](/slides/Thesis_candidature.html)
