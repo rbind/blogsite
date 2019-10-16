@@ -1,7 +1,7 @@
 ---
 title: "Thesis and Candidature Review Milestone Seminar"
 author: "Tongchuan Zhang"
-date: "2019-04-28 (updated: `r Sys.Date()`)"
+date: "2019-04-28"
 output:
   xaringan::moon_reader:
     lib_dir: libs

@@ -1,0 +1,160 @@
+---
+title: "Work Report: RNAcoup"
+author: "TC"
+date: "2019-10-16"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE, cache= TRUE, fig.align="center", fig.height=5, fig.width=9)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+load("~/GIT/rna_ml/rdata/tmp.workspace.rda")
+```
+
+
+
+## Project 
+
+- An Fully Automatic Method for Evolution-Coupling Analysis of RNA
+
+---
+## Dataset
+- 4528 PDB with RNA -> 4281 RNA chains
+  - 3128 mapped to RFAM
+     - 3.5 Å, length 32~500
+     - cd-hit-east clusterring: 132 
+     - 1 RNA for 1 RFAM family: 50
+     - **set1**: 50
+  - 1099 not mapped 
+     - 3.5 Å, length 32~500
+     - cd-hit-east clusterring: 129
+     - **set2**: 129
+     
+---
+## Methods
+
+- Compare DCA methods on predicting secondary structure
+
+- Compare RNA sequence profiles (using GREMLIN)
+  - RFAM family sequences
+  - blastn
+  - blastn + RNAfold + infernal
+  
+- Compare set1(mapped to RFAM) and set2 (unmapped)
+
+- neff effect
+
+---
+## Results
+
+- Compare DCA methods on predicting secondary structure
+
+- Compare RNA sequence profiles (using GREMLIN)
+  - RFAM family sequences
+  - blastn
+  - blastn + RNAfold + infernal
+  
+- Compare set1(mapped to RFAM) and set2 (unmapped)
+
+- neff effect
+
+
+---
+
+## Compare DCA methods on predicting secondary structure in set1
+
+- 2002 base pairs of 50 RNA in set1
+
+```{r}
+bench.pulled_set1_rfa %>%
+  arrange(desc(mcc)) %>%
+  knitr::kable(digits=2, format="html")
+```
+
+
+---
+
+## By case
+
+
+
+```{r}
+plot_mcc(rslt.set1.rfa)+ ggtitle("set1, MCC of GREMLIN-plmc")
+```
+
+- GREMLIN is better than plmc (p:0.03, paired-t test) and mfDCA(p-value: 1.1e-6, paired-t test)
+
+
+---
+## Compare different RNA sequence profiles (using GREMLIN)
+
+```{r}
+# 
+# bench.pulled_set1_rfa
+# 
+# bench.pulled_set1_inf
+# 
+# bench.pulled_set2_inf
+
+
+tmp = rbind(bench.pulled_set1_rfa[1,],
+                    bench.pulled_set1_inf[1,],
+                    bench.pulled_set1_blast[1,],
+            bench.pulled_set2_inf[1,]) 
+
+# rownames(tmp) = c("set1_rfam","set1_infernal","set1_blastn")
+
+tmp %>% 
+  mutate(model="gremlin",
+         set = c("set1_rfam","set1_infernal","set1_blastn","set2_infernal")) %>%
+  select(set,model, mcc,f1,sensitivity, precision) %>%
+  knitr::kable(digits=2, format="html")
+```
+
+---
+## By case
+
+```{r}
+tb.set1 %>%
+  ggplot(aes(score_gremlin_rfa, score_gremlin_inf)) +
+  geom_point()+ geom_abline()
+```
+
+- RNA coup is better than RFAM profile in 20 of 50 cases
+
+---
+## Tertiary contacts
+
+```{r}
+load("~/GIT/rna_ml/rdata/perf.tertiary.rda")
+
+perf.tertiary %>%
+  arrange(desc(mcc)) %>%
+  knitr::kable(digits=2, format="html")
+```
+
+
+---
+## PR curve
+
+```{r}
+load("~/GIT/rna_ml/rdata/aupr.rda")
+
+
+source("~/GIT/rna_ml/R/Benchmarks.R")
+library(PRROC)
+# lapply(aupr,plot)
+plot(aupr[[1]])
+```
+
+
