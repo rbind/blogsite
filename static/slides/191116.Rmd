@@ -1,0 +1,70 @@
+---
+title: "Work Report: RNAcoup"
+author: "TC"
+date: "2019-11-14"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE, cache= TRUE, fig.align="center", fig.height=5, fig.width=9)
+library(dplyr)
+library(ggplot2)
+
+
+```
+
+
+class: center, inverse, middle
+
+> # Manuscript progress finished, will send after the group meeting.
+> TC
+
+
+---
+
+# Some more results:
+
+### Novel RNA families outside RFAM2?
+
+.pull-left[
+- In set2 (PDB RNAs not mapped to RFAM)
+
+- 18 of 136 has neff > 100 (highest: 961), 13 of 18 has MCC > 0.6
+
+
+]
+
+.pull-right[
+
+```{r fig.height=8}
+load("~/GIT/rna_ml/rdata/gg.set2.rda")
+
+gg.set2+ ggtitle("Set2(Non-RFAM)")+ geom_vline(xintercept=100,color="red")+
+  geom_hline(yintercept=0.5,color="red")
+```
+
+
+
+]
+
+---
+
+# Next step
+
+## - DCA + RNA SS prediction
+
+### - higher-order DCA terms to improve non-basepair contact prediction
+
+#### - Revisiting RNA puzzle targets using RNAcoup
+
+##### - DFIRE-RNA?  
+
+###### - SPalign-RNA?
+
+

@@ -34,3 +34,4 @@ nocomment: 'true'
 - 2019-08-28 ["Work Report: Evolutional couplings RNA"](/slides/190828_RNACOUP.html)
 - 2019-09-18 ["Work Report: RNAcoup"](/slides/190912_RNACOUP.html)
 - 2019-10-16 ["Work Report: RNAcoup"](/slides/191016_rnacoup.html)
+- 2019-11-14 ["Work Report: RNAcoup"](/slides/191116.html)
