@@ -35,3 +35,5 @@ I am happy again.
 Update: now I am at 831 reps
 
 Update2: now I am at 1542 reps. Someone on the github xaringan repo [even mentioned my answer](https://github.com/yihui/xaringan/issues/182#issuecomment-437632871)
+
+Update3: 191217, I'm at 2101 reps. 
