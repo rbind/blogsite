@@ -1,0 +1,168 @@
+---
+title: "Workreport"
+author: "TC"
+date: "2020-01-22"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
+      beforeInit: "https://api.sparks-lab.org/js/sparkscloud.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE, cache= TRUE, fig.align="center", fig.height=5, fig.width=9)
+load("~/GIT/rna_ml/rdata/gglist.rda")
+```
+
+
+
+---
+class: center middle inverse 
+
+## RNAcmap
+
+
+---
+
+## Predicted SS: SPOT-RNA vs RNAfold
+
+
+```{r}
+gglist$RNAcmap_predss_scatter
+```
+
+
+
+---
+
+## Final predicted bp of RNAcmap: SPOT-RNA vs RNAfold
+
+
+```{r}
+gglist$RNAcmap_ss_scatter
+```
+
+
+---
+
+## Strict filtering of SPOT-RNA training 
+
+
+```{r}
+gglist$RNAcmap_ss_scatter_five
+```
+
+---
+
+## F1-score vs neff/L
+
+Blue: SPOT-RNA improved over RNAfold
+
+```{r}
+gglist$haircut
+```
+
+
+---
+
+## F1-score of RNAcmap and predicted SS
+
+Blue: SPOT-RNA improved over RNAfold
+
+```{r}
+gglist$haircut2
+```
+
+---
+class: center middle inverse 
+
+## Webserver
+
+
+---
+## Structure
+
+A centralized job management server based on Google cloud platform.
+
+.center[
+```{r echo=FALSE, fig.align='center'}
+
+DiagrammeR::mermaid(
+"graph TB
+A(Servers on aspen) --- C(Cloud)
+
+B(Servers on gowonda) --- C
+
+
+C --- D(User1)
+C --- E(User2)
+C --- F(User3)
+C --- G(User4)
+
+", height= 300
+)
+```
+]
+
+Benefits
+
+- Centralized task management
+- Simpler server set up.
+
+
+---
+
+## Cloud server structure
+
+- Server specs:
+  - 1GB RAM, 1 Cpu, 500 GB storage
+  - Cost: ~40 AUD/month
+  
+
+Endpoints at https://api.sparks-lab.org. Used to interact with the SQL database on the server.
+- static files : Downloads, PDFs
+-  /upload : user submit a task using the form.
+-  /tasks : check tasks 
+-  /tasks?method=RNAcmap&status=0 : check RNAcmap tasks with status "in the queue"
+-  /tasks/2/update?status=1 : set the status of task 2 as "in process"
+-  /tasks/2/delete : delete all files of task 2
+
+
+
+
+---
+
+## Use the servers
+
+- User: Submit a job
+- User: bookmark job page
+- Servers on aspen: process a job, upload results to the cloud server
+- User: check result & delete job files
+
+---
+
+## Track job status
+
+<button onClick="checkqueue('https://api.sparks-lab.org/tasks')"> Check the Job Queue Status </button>
+<button onClick="checkthisjob('https://api.sparks-lab.org/tasks?id=45')"> Check Job Status  </button>
+<button onClick="checkqueue('https://api.sparks-lab.org/tasks')"> Check Queue Status </button>
+<button onClick="checkmyjobs('https://api.sparks-lab.org/tasks?info=132.234.113.205')"> Check My Jobs </button>
+
+<div id="queueinfo"></div>
+
+---
+
+## Main website
+
+- https://sparks-lab.org
+
+- A static website using Hugo, deployed on Netlify
+
+- Benefits
+    - Version control (Git/Github)
+    - fast
+    - Independent to the cloud server. ~~Don't put all eggs in one basket~~
