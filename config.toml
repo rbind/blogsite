@@ -38,8 +38,8 @@ footnotereturnlinkcontents = "↩"
     enableGitalk = true
   
 [params.gitalk]
-    clientID = "80e8ee2d8b0f04a52c2e" # Your client ID
-    clientSecret = "4ccbae190e72ec2e6b8fbd8b57f3b77269efdc95" # Your client secret
+    clientID = "Iv1.bd6e768a69af2392" # Your client ID
+    clientSecret = "84eda2cf418cd84526ee1aa105d299572a69b6d3" # Your client secret
     repo = "gitalkcomments" # The repo to store comments
     owner = "tcgriffith" # Your GitHub ID
     admin= "tcgriffith" # Required. Github repository owner and collaborators. (Users who having write access to this repository)
