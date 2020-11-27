@@ -1,0 +1,85 @@
+---
+title: "Workreport: MRFalign"
+author: "TC"
+date: "2020-05-20"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
+      # beforeInit: "https://api.sparks-lab.org/js/sparkscloud.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,fig.align='center',fig.height = 6,fig.width = 9)
+load("~/df.rslt")
+library(ggplot2)
+library(patchwork)
+
+load("~/ggsparsefull_mrffull.rda")
+gg3=gg1
+gg4=gg2
+```
+
+
+## Sparse MRF model
+
+- Only keep pairs defined in reference SS
+
+- Double DP for initial seed alignment: works on synthetic MSA but still too slow for real RNAs
+
+---
+
+## MRF_Sparse performs  worse than dense
+
+
+```{r}
+
+df.rslt$time=c("2mins","17mins")
+
+knitr::kable(df.rslt,format = "html",digits = 2)
+```
+
+
+---
+
+## Pairwise energy inconsistent between mrf_full and mrf_sparse
+
+- Compared to reference alignment and mrf_full alignment: mrf_sparse alignment is favored
+
+```{r}
+load("~/ggsparsefull.rda")
+gg1=gg1+ggtitle("MRF_sparse")
+gg3=gg3+ggtitle("MRF_full")
+
+(gg1+gg2)/(gg3+gg4)
+```
+
+
+
+---
+# Synthetic MSA: MRF_sparse performs better
+
+```{r}
+load("~/rslt.synth.rda")
+
+knitr::kable(rslt.synth$df,format = "html",digits = 3)
+```
+
+
+```{r,fig.height=5}
+rslt.synth$gg1+rslt.synth$gg2
+```
+
+---
+
+## Double DP initialization
+
+```{r}
+
+```
+
+

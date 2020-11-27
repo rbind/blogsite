@@ -1,0 +1,112 @@
+---
+title: "Workreport: MRFalign"
+author: "TC"
+date: "2020-05-20"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
+      # beforeInit: "https://api.sparks-lab.org/js/sparkscloud.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,fig.align='center',fig.height = 6,fig.width = 9)
+library(patchwork)
+load("~/GIT/HMMtest/rdata/gglist.rda")
+```
+
+## RFAM Pseudoknot family re-align
+
+- 58 RFAM families with covariance observed in the PK region.
+
+- Re-align with MRFalign and cmalign
+
+- The alignment quality is measured by comparing the alignment MSA with the seed alignment.
+
+---
+## Alignment accuracy
+
+```{r }
+gglist$overview
+```
+
+
+---
+## PK region
+
+```{r}
+gglist$PK
+```
+
+---
+## Non-PK stem regions
+```{r}
+gglist$nonPK
+```
+
+---
+## all regions
+
+```{r}
+gglist$scatterall
+```
+
+---
+## Pseudoknot regions
+
+```{r}
+gglist$scatterPK
+```
+
+
+---
+## Example1
+
+~50% Pseudoknot base pairs are wrong by CMalign, resulting in bad DCA contacts
+
+```{r}
+gglist$exp1 |gglist$exp1_2
+```
+
+
+---
+## Example2
+
+```{r}
+gglist$exp2 |gglist$exp2_2
+```
+
+---
+## Same as the artificial PK example
+
+```{r}
+library(ggplot2)
+load("~/synth_DCA.rda")
+gg1+ggtitle("Contactmap on MRFalign MSA")+
+  gg2+ggtitle("Contactmap on CMalign MSA")
+
+```
+
+
+
+---
+## Summary
+
+- MRF align Pseudoknot RNAs better than CMalign given sufficient RNAs(arbitrarily picked 50 for now)
+    - CMalign only perform good in cases where Pseudoknots are highly conserved
+    - But only 2 good examples (too few?)
+    
+- Time scales at n(L^4), L>300nt, 100 seqs takes ~6 hours.
+    - Probably OK, **95%** RFAM families are under 300nt.
+    
+
+
+
+
+
+
+

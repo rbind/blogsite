@@ -40,3 +40,7 @@ nocomment: 'true'
 - 2020-01-22 ["Workreport"](/slides/200213.html)
 - 2020-01-22 ["Workreport: Aligning networks"](/slides/200226.html)
 - 2020-01-22 ["Workreport: Aligning networks"](/slides/200318.html)
+- 2020-04-01 ["Workreport: MRF"](/slides/200401_mrfalign.html)
+- 2020-04-01 ["Workreport: MRFalign"](/slides/200414.html)
+- 2020-04-01 ["Workreport: MRFalign"](/slides/200429.html)
+- 2020-05-20 ["Workreport: RNAcmap &MRFalign"](/slides/200520.html)

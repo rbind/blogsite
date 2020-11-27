@@ -1,0 +1,65 @@
+---
+title: "Workreport: RNAcmap &MRFalign"
+author: "TC"
+date: "2020-05-20"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
+      # beforeInit: "https://api.sparks-lab.org/js/sparkscloud.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(ggplot2)
+library(patchwork)
+load("~/synth_DCA.rda")
+```
+
+# RNAcmap paper reviews 
+
+- Overall positive
+
+
+- Dataset
+    - non-redundant RNAs from PDB
+    - 800+ more RNAs (expected to finish in 1 week)
+    - **Pseudobase++**: 
+        - 304 RNAs
+    - **RNA atlas**: non-redundant RNAs by species, updated weekly
+        - 1874 RNAs
+        - length 32~500, single chain
+        - 548 RNAs
+
+- Methods to compare
+    - Rscape
+    - RNAalifold locarna etc
+
+- Standalone package, better documentation etc
+
+---
+
+# MRFalign
+
+
+- Alignment of 1000 synthetic sequences with defined PK
+  - generate 1000 seqs with "((((.AAAA..))))...aaaa..."
+  - separately trained MRF and CM models
+  - Re-align with MRFalign&CM 
+  - DCA of the re-generated MSA
+
+---
+# Signal on the MRFalign MSA better
+
+```{r echo=FALSE, fig.width=12}
+gg1+ggtitle("Contactmap on MRFalign MSA")+
+  gg2+ggtitle("Contactmap on CMalign MSA")
+
+```
+
+
+
