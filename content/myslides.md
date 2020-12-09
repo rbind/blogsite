@@ -44,3 +44,6 @@ nocomment: 'true'
 - 2020-04-01 ["Workreport: MRFalign"](/slides/200414.html)
 - 2020-04-01 ["Workreport: MRFalign"](/slides/200429.html)
 - 2020-05-20 ["Workreport: RNAcmap &MRFalign"](/slides/200520.html)
+- 2020-05-20 ["Workreport: MRFalign"](/slides/200604.html)
+- 2020-05-20 ["Workreport: MRFalign"](/slides/200617.html)
+- 2020-12-09 ["Workreport: RNAmrf"](/slides/201209.html)
