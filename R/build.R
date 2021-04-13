@@ -1,6 +1,6 @@
 # https://bookdown.org/yihui/blogdown/static-files.html
 
-blogdown::build_dir("static")
+#blogdown::build_dir("static")
 
 # generate a myslides index page
 library(dplyr)

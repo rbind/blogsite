@@ -47,3 +47,4 @@ nocomment: 'true'
 - 2020-05-20 ["Workreport: MRFalign"](/slides/200604.html)
 - 2020-05-20 ["Workreport: MRFalign"](/slides/200617.html)
 - 2020-12-09 ["Workreport: RNAmrf"](/slides/201209.html)
+- 2021-04-12 ["RNA Structural Modelling"](/slides/210412.html)

@@ -7,9 +7,8 @@
     <meta name="date" content="2020-12-09" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
-    <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-    <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -82,10 +81,10 @@ class: center, middle, inverse
 &lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style="border-bottom:hidden" colspan="1"&gt;&lt;/th&gt;
-&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;PK alignment&lt;/div&gt;&lt;/th&gt;
-&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;non-PK alignment&lt;/div&gt;&lt;/th&gt;
-&lt;th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Contact Prediction&lt;/div&gt;&lt;/th&gt;
+&lt;th style="empty-cells: hide;border-bottom:hidden;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;PK alignment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;non-PK alignment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Contact Prediction&lt;/div&gt;&lt;/th&gt;
 &lt;/tr&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
@@ -103,7 +102,7 @@ class: center, middle, inverse
 &lt;tbody&gt;
   &lt;tr grouplength="2"&gt;&lt;td colspan="10" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;simulation_1&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.07 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.08 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.07 &lt;/td&gt;
@@ -115,7 +114,7 @@ class: center, middle, inverse
    &lt;td style="text-align:right;"&gt; 0.47 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.74 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.74 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.74 &lt;/td&gt;
@@ -128,7 +127,7 @@ class: center, middle, inverse
   &lt;/tr&gt;
   &lt;tr grouplength="2"&gt;&lt;td colspan="10" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;simulation_2&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.29 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.29 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.29 &lt;/td&gt;
@@ -140,7 +139,7 @@ class: center, middle, inverse
    &lt;td style="text-align:right;"&gt; 0.86 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.59 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.59 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.59 &lt;/td&gt;
@@ -153,7 +152,7 @@ class: center, middle, inverse
   &lt;/tr&gt;
   &lt;tr grouplength="2"&gt;&lt;td colspan="10" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;simulation_3&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.16 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.17 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.16 &lt;/td&gt;
@@ -165,7 +164,7 @@ class: center, middle, inverse
    &lt;td style="text-align:right;"&gt; 0.80 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.58 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.58 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.58 &lt;/td&gt;
@@ -178,7 +177,7 @@ class: center, middle, inverse
   &lt;/tr&gt;
   &lt;tr grouplength="2"&gt;&lt;td colspan="10" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;simulation_4&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.16 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.16 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.16 &lt;/td&gt;
@@ -190,7 +189,7 @@ class: center, middle, inverse
    &lt;td style="text-align:right;"&gt; 0.85 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.60 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.60 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.60 &lt;/td&gt;
@@ -203,7 +202,7 @@ class: center, middle, inverse
   &lt;/tr&gt;
   &lt;tr grouplength="2"&gt;&lt;td colspan="10" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;total&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; cmalign &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.17 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.18 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.17 &lt;/td&gt;
@@ -215,7 +214,7 @@ class: center, middle, inverse
    &lt;td style="text-align:right;"&gt; 0.77 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left; padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; rnamrf &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.63 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.63 &lt;/td&gt;
    &lt;td style="text-align:right;font-weight: bold;"&gt; 0.63 &lt;/td&gt;
@@ -391,6 +390,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -408,17 +433,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
