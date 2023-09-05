@@ -1,9 +1,0 @@
----
-title: showcase for responsive DT table
-date: '2019-12-17'
----
-
-```{r}
-DT::datatable(head(iris, 20))
-```
-
