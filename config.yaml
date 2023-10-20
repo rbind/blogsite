@@ -1,4 +1,4 @@
-baseURL: ""
+baseURL: "https://tc.rbind.io/"
 title: tc&xy
 paginate: 10
 theme: PaperModcustom
