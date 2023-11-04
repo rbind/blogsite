@@ -7,7 +7,6 @@ categories:
   - games
 tags:
   - games
-draft: true
 ---
 
 
