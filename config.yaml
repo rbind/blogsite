@@ -67,8 +67,6 @@ params:
     buttons:
       - name: 博客
         url: post
-      - name: blog
-        url: en
       - name: 小玩艺
         url: collections
   # home-info mode
