@@ -21,7 +21,7 @@ tags:
 
 ## 视觉设计
 
-![](https://tctcab.top/images/ext/3.png)
+![](https://tctcxy.online/images/ext/3.png)
 
 视觉设计部分的东西由老婆大人一手包办，包括头图设计，标题，按钮，整体配色。 logo算是小彩蛋， 魔改自双人成行，也是我们一起打穿的第一个游戏。这部分主要展现老婆ps功底，然后素材和设计方案通过[蓝湖](https://lanhuapp.com/) 平台跟我共享。实际使用素材再根据实地测试进行微调。
 
@@ -36,7 +36,7 @@ tags:
 
 ## 留言板
 
-![](https://tctcab.top/images/ext/1.png)
+![](https://tctcxy.online/images/ext/1.png)
 
 经过一番深思熟虑的讨论后，最终视觉设计确定为网红咖啡店那种贴满便签风一吹掉一地的那种留言墙。
 
@@ -46,7 +46,7 @@ tags:
 
 ## 照片墙
 
-![](https://tctcab.top/images/ext/2.png)
+![](https://tctcxy.online/images/ext/2.png)
 
 照片墙借鉴ins瀑布流的双栏设计, 使用flex布局设计了双栏显示, 并引入[photoswipe](https://photoswipe.com/) 库 实现图库在移动端/PC端点击放大，滑动翻页等功能。
 
@@ -56,9 +56,9 @@ tags:
 
 
 
-地址是: https://tctcab.top/ 欢迎路过的朋友留言   🤟 
+地址是: https://tctcxy.online/ 欢迎路过的朋友留言   🤟 
 
 
 
 
-[传送门](https://tctcab.top/#about)
+[传送门](https://tctcxy.online/#about)
